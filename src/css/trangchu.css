@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0f0ff;
+}
+
+.header {
+    background-color: #ffffff;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+.header .logo-container {
+    display: flex; 
+    align-items: center; 
+}
+.header .logo-text {
+    font-size: 20px; 
+    font-weight: bold; 
+    color: blue;
+}
+.header img {
+    height: 40px;
+}
+.header nav {
+    display: flex;
+    gap: 40px; 
+    margin-left: 100px; 
+}
+.header nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+.header .cta {
+    display: flex;
+    align-items: center;
+    margin-left: 600px;
+}
+.header .cta a {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+
+}
+
+.main {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.main h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.main p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.main .buttons a {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.content {
+    padding: 50px 20px;
+    text-align: center;
+    max-width: 1200px; /* Giới hạn chiều rộng */
+    margin: 0 auto; /* Căn giữa content */
+}
+
+.content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center; /* Căn giữa phần ảnh và phần checklist */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    text-align: left;
+    gap: 40px;
+    max-width: 100%; /* Đảm bảo phần nội dung không bị quá hẹp */
+}
+
+.image-container {
+    flex: 1;  /* Giới hạn chiều rộng của ảnh */
+    padding-right: 20px;  /* Tạo khoảng cách giữa ảnh và phần chữ */
+    padding-left: 200px;
+    max-width: 400px; /* Giới hạn chiều rộng ảnh */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-container {
+    flex: 2; /* Chiếm 2/3 không gian so với ảnh */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.text-container ul li {
+    margin-bottom: 20px; /* Khoảng cách giữa các mục */
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.check-item i {
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.check-item .highlight {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.text-container ul li p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.contact {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.ontact h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+
+/* .form-container {
+    background-color: #d0e0ff;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+}
+.form-container h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.form-container input, .form-container select {
+    width: calc(50% - 10px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-container input[type="text"] {
+    width: calc(100% - 20px);
+} */

@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #fff, #fff 50%, #1a73e8 50%, #1a73e8);
+}
+.container {
+    display: flex;
+    width: 800px;
+    height: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.left {
+    flex: 1;
+    padding: 40px;
+    background: #fff;
+}
+.right {
+    flex: 1;
+    background: #1a73e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.right img {
+    width: 100px;
+}
+.right::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: url('https://placehold.co/800x100') no-repeat center bottom;
+    background-size: cover;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group a {
+    float: right;
+    text-decoration: none;
+    color: #1a73e8;
+}
+.form-group a:hover {
+    text-decoration: underline;
+}
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.checkbox-group input {
+    margin-right: 10px;
+}
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn:hover {
+    background: #155ab6;
+}
+.sso {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+.sso-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+.sso-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+.sso-buttons button i {
+    margin-right: 10px;
+}
+.sso-buttons button:hover {
+    background: #f1f1f1;
+}

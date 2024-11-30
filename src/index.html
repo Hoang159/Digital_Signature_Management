@@ -1,151 +1,89 @@
 <html>
 <head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-
+    <link rel="icon" href="/assets/images/logo1.png" type="image/png">
+    <title> HMP Sign </title>
+    <link rel="stylesheet" href="/assets/fonts/googleapis.css">
+    <link rel="stylesheet" href="/src/css/trangchu.css">
 </head>
 
-<body class="font-roboto">
-
-    <header class="bg-white shadow">
-        <div class="container mx-auto flex justify-between items-center py-4 px-6">
-            <div class="flex items-center">
-                <img alt="Base.vn logo" class="h-10" height="40" src="https://storage.googleapis.com/a1aa/image/0qDfmV0KsY1heUHDTXiyfFwAfPq4JyRF7ivO64NiNV7VeNDeE.jpg" width="40"/>
-                <span class="ml-2 text-xl font-bold text-blue-600"> BASE.VN </span>
-            </div>
-        
-            <nav class="flex items-center space-x-6 text-gray-600">
-                <div class="relative group">
-                    <button class="focus:outline-none"> SẢN PHẨM
-                    <i class="fas fa-caret-down"> </i>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#"> Product 1 </a>
-                        <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#"> Product 2 </a>
-                    </div>
-                </div>
-
-                <div class="relative group">
-                    <button class="focus:outline-none"> GIẢI PHÁP
-                    <i class="fas fa-caret-down"> </i>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#"> Solution 1 </a>
-                        <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#"> Solution 2 </a>
-                    </div>
-                </div>
-
-                <a class="hover:text-gray-800" href="#"> KHÁCH HÀNG </a>
-                <a class="hover:text-gray-800" href="#"> CÔNG TY </a>
-                
-                <div class="relative group">
-                    <button class="focus:outline-none"> RESOURCES
-                    <i class="fas fa-caret-down"></i>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#"> Resource 1 </a>
-                        <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#"> Resource 2 </a>
-                    </div>
-                </div>
-                
-            </nav>
-
-            <div class="flex items-center space-x-4">
-                <a class="text-gray-600 hover:text-gray-800" href="/login.html"> Đăng nhập </a>
-                <a class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" href="#"> Đăng ký Demo </a>
-            </div>
-
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img alt="Company Logo" src="/assets/images/logo2.png" class="logo-image">
+            <span class="logo-text">HMP</span>
         </div>
-    </header>
-
-    <main class="bg-blue-600 text-white py-20">
-        <div class="container mx-auto text-center">
-            <h1 class="text-2xl font-medium"> Base Sign ™ </h1>
-            <h2 class="text-4xl font-bold mt-4"> Ứng dụng chữ ký số cho doanh nghiệp của bạn </h2>
-            <p class="text-lg mt-4">
-                Sử dụng chữ ký số ngay trên các ứng dụng của Base
-            </p>
-
-            <div class="mt-8 flex justify-center space-x-4">
-                <a class="bg-white text-blue-600 px-6 py-3 rounded-full font-medium hover:bg-gray-100" href="#">
-                    Đăng ký Demo
-                </a>
-                <a class="bg-transparent border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-blue-600" href="javascript:void(0);" id="tinhNangLink">
-                    Xem chi tiết tính năng
-                </a>
-            </div>
+        <nav>
+            <a href="#"> SẢN PHẨM </a>
+            <a href="javascript:void(0);" id="TinhNangLink1"> TÍNH NĂNG </a>
+            <a href="javascript:void(0);" id="LienHe"> LIÊN HỆ </a>
+        </nav>
+        <div class="cta">
+            <a href="/src/components/login.html"> Đăng nhập </a>
+            <a href="#"> Đăng ký </a>
         </div>
-        
-        <!--<div class="container mx-auto px-4 py-8">-->
-        <div class="text-center mb-8 p-8 bg-blue-100 border-l-4 border-blue-500 rounded-lg">
-            <div class="text-center mb-8">
-             <h1 class="text-2xl font-bold text-black" id="tinhNangContent">
-              Đăng ký và tích hợp chữ ký điện tử
-             </h1>
-             <p class="text-black">
-              Doanh nghiệp có thể đăng ký chữ ký điện tử với FPT-CA và tích hợp chữ ký với hệ thống của Base
-             </p>
-            </div>
-            <div class="flex justify-center items-start">
-             <div class="w-1/2">
-              <img alt="Screenshot of electronic signature registration form" class="rounded shadow-lg" height="400" src="https://storage.googleapis.com/a1aa/image/gzWyzagm4haVNVZWCCjGs21MndaZRWocr8xcEoktA1jfZO4JA.jpg" width="600"/>
-             </div>
-             <div class="w-1/2 pl-8">
-              <ul class="list-none">
-               <li class="flex items-start mb-4">
-                <i class="fas fa-check-circle text-blue-500 text-xl mr-2">
-                </i>
-                <div>
-                 <h3 class="text-lg font-semibold">
-                  Đăng ký chữ ký
-                 </h3>
-                 <p class="text-gray-600">
-                  Khách hàng đăng ký chữ ký với đơn vị cung cấp
-                 </p>
-                </div>
-               </li>
-               <li class="flex items-start mb-4">
-                <i class="fas fa-check-circle text-blue-500 text-xl mr-2">
-                </i>
-                <div>
-                 <h3 class="text-lg font-semibold">
-                  Tích hợp chữ ký
-                 </h3>
-                 <p class="text-gray-600">
-                  Chữ ký được tích hợp để ký trên hệ thống của Base
-                 </p>
-                </div>
-               </li>
-               <li class="flex items-start mb-4">
-                <i class="fas fa-check-circle text-blue-500 text-xl mr-2">
-                </i>
-                <div>
-                 <h3 class="text-lg font-semibold">
-                  Dễ dàng quản lý
-                 </h3>
-                 <p class="text-gray-600">
-                  Dễ dàng quản lý các chữ ký điện tử mà doanh nghiệp đăng ký
-                 </p>
-                </div>
-               </li>
-              </ul>
-             </div>
-            </div>
-           </div>
-
-    </main>
-
-    <!-- Thêm sự kiện cuộn đến iframe -->
-    <script>
-        document.getElementById('tinhNangLink').addEventListener('click', function() {
-            // Cuộn đến phần iframe
-            document.getElementById('tinhNangContent').scrollIntoView({ behavior: 'smooth' });
-        });
-    </script>
+    </div>
+      
+    <div class="main">
+        <h1> HMP Sign </h1>
+        <p> Ứng dụng quản lý chữ ký số cho bạn </p>
+        <p> Sử dụng chữ ký số ngay trên các ứng dụng của HMP </p>
+       
+        <div class="buttons">
+            <a href="#"> Đăng ký </a>
+            <a href="javascript:void(0);" id="TinhNangLink2"> Xem chi tiết tính năng </a>
+        </div>
+    </div>
+      
+    <div class="content" id="TinhNangContent">
+        <h2> Đăng ký và tích hợp chữ ký số </h2>
+        <p> Doanh nghiệp hoặc cá nhân có thể đăng ký chữ ký số và tích hợp chữ ký với hệ thống của HMP </p>
     
+        <div class="content-wrapper">
+            <div class="image-container">
+                <img src="/assets/images/logo1.png" alt="Screenshot of electronic signature registration form">
+            </div>
+            <div class="text-container">
+                <ul>
+                    <li>
+                        <div class="check-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="highlight">Đăng ký chữ ký:</span>
+                        </div>
+                        <p>Khách hàng đăng ký chữ ký với đơn vị cung cấp</p>
+                    </li>
+                    <li>
+                        <div class="check-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="highlight">Tích hợp chữ ký:</span>
+                        </div>
+                        <p>Chữ ký được tích hợp để ký trên hệ thống của HMP</p>
+                    </li>
+                    <li>
+                        <div class="check-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="highlight">Dễ dàng quản lý:</span>
+                        </div>
+                        <p>Dễ dàng quản lý các chữ ký điện tử mà khách hàng đăng ký</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contact" id="LienHeContent">
+        <h1> Liên hệ </h1>
+    </div>
+      
+    <!-- <div class="form-container">
+        <h3> Electronic signature culdra tion fert </h3>
+        <input placeholder="Caller" type="text"/> 
+        <input placeholder="Signated" type="text"/>
+        <input placeholder="Signatee" type="text"/>
+        <input placeholder="Engand" type="text"/>
+        
+        <select><option> Stratury </option></select>
+    </div> -->
+
+    <script src="/src/js/script.js"></script>
 </body>
 </html>
