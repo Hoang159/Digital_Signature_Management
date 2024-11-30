@@ -9,16 +9,16 @@
 <body>
     <div class="container">
         <div class="left">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <img alt="Logo" height="100" src="https://storage.googleapis.com/a1aa/image/fOJBgMaO40SSLyfu9fNRn02jnNMdwegmkSgUrpplfttZoSDeE.jpg" width="100"/>
+            <div class = "left-logo">
+                <img alt="Logo" height="100" src="/assets/images/logo2.png" width="100"/>
             </div>
-            <h2 style="text-align: center;"> Đăng nhập </h2>
-            <p style="text-align: center; color: #666;"> Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.</p>
+            <h2 style="text-align: center;"> Đăng nhập HMP Sign</h2>
+            <!-- <p style="text-align: center; color: #666;"> Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.</p> -->
             
             <form>
                 <div class="form-group">
-                    <label for="email"> Email </label>
-                    <input id="email" placeholder="Email của bạn" type="email"/>
+                    <label for="username"> Tài khoản </label>
+                    <input id="username" placeholder="Tài khoản của bạn" type="text"/>
                 </div>
                 <div class="form-group">
                     <label for="password"> Mật khẩu </label>
@@ -29,23 +29,39 @@
                     <input id="remember" type="checkbox"/>
                     <label for="remember"> Giữ tôi luôn đăng nhập </label>
                 </div>
-                <button class="btn" type="submit"><a href="/src/components/home.html">Đăng nhập</a></button>
+                <div class="button-container">
+                    <button class="btn btn-dangnhap" type="submit">
+                        <a href="/src/components/home.html">Đăng nhập</a>
+                    </button>
+                    <button class="btn btn-dangky" type="submit">
+                        <a href="#">Tạo tài khoản</a>
+                    </button>
+                </div>
             </form>
         
             <div class="sso">
-                <p> Hoặc, đăng nhập thông qua SSO </p>
+                <p> Hoặc </p>
                 <div class="sso-buttons">
-                    <button><i class="fab fa-google"></i> Đăng nhập bằng Google </button>
-                    <button><i class="fab fa-microsoft"></i>Đăng nhập bằng Microsoft </button>
-                    <button><i class="fab fa-apple"></i> Đăng nhập bằng Apple </button>
-                    <button><i class="fas fa-key"></i> Đăng nhập bằng SAML </button>
+                    <button>
+                        <span class="icon"><i class="fab fa-google"></i></span>
+                        <span class="text">Đăng nhập bằng Google</span>
+                    </button>
+                    <button>
+                        <span class="icon"><i class="fab fa-microsoft"></i></span>
+                        <span class="text">Đăng nhập bằng Microsoft</span>
+                    </button>
+                    <button>
+                        <span class="icon"><i class="fab fa-facebook"></i></span>
+                        <span class="text">Đăng nhập bằng Facebook</span>
+                    </button>
                 </div>
             </div>
+            
         </div>
         
-        <div class="right">
+        <!-- <div class="right">
             <img alt="Background Logo" height="100" src="https://storage.googleapis.com/a1aa/image/QBgepgHDcbTHPagdLYEJWIfNI0s80O3B1xdPzoGTkMzEVawTA.jpg" width="100"/>
-        </div>
+        </div> -->
     </div>
 
 </body>
