@@ -12,7 +12,7 @@
 **git add .** (dấu chấm để add tất cả)
 **git commit -m"mô tả thay đổi"** (hình như bắt buộc phải điền mô tả thay đổi, để trống không được đâu)
 **git push origin master** (đẩy lên github)
-4. Còn muốn lấy những thay đổi về máy mình thì gõ lệnh **git pull**
+4. Còn muốn lấy những thay đổi về máy mình thì gõ lệnh **git pull origin master**
 
 Lưu ý: Các file test.txt thêm vào để đẩy những folder trống lên được github, khi code thì có thể xóa. Trước khi code có thể clone về rồi thử thay đổi và làm các bước như trên để xem cách hoạt động.
 
