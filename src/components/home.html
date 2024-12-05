@@ -7,104 +7,116 @@
 </head>
 
 <body>
+
+    <div class="header">
+        <div class="logo">
+            <img alt="Logo" src="/assets/images/logo2.png" />
+            <span> HMPSign </span>
+        </div>
+        <div class="dangxuat">
+            <img alt="Avatar" src="/assets/images/avatar.jpg" />
+            <button> Tên người dùng </button>
+        </div>
+    </div>
+
     <div class="container">
         <div class="sidebar">
-            <img alt="User profile picture" height="50" src="https://storage.googleapis.com/a1aa/image/9ROxZ7hJwzbnBxsHke4ETbqkJCtqmf24iM7jg0jFqeOtQHsnA.jpg" width="50"/>
-            <h2> Andrew Wade </h2>
-            <p> Qik AI90 </p>
+            <div class="information">
+                <img alt="User profile picture" src="/assets/images/avatar.jpg"/>
+                <div class="text">
+                    <h2>Tên người dùng</h2>
+                    <p>Tên tài khoản</p>
+                </div>
+            </div>
             <ul>
-                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard </a></li>
-                <li><a href="#"><i class="fas fa-pen"></i> Sign yourself </a></li>
-                <li><a href="#"><i class="fas fa-paper-plane"></i> Request signatures </a></li>
-                <li><a href="#"><i class="fas fa-file-alt"></i> Templates </a></li>
-                <li><a href="#"><i class="fas fa-folder"></i> OpenSign™ Drive </a></li>
-                <li><a href="#"><i class="fas fa-chart-bar"></i> Reports </a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Settings </a></li>
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Bảng điều khiển </a></li>
+                <li><a href="#"><i class="fas fa-paper-plane"></i> Yêu cầu chữ ký số </a></li>
+                <li><a href="#"><i class="fas fa-folder"></i> Xem chữ ký số </a></li>
+                <li><a href="#"><i class="fas fa-pen"></i> Ký tài liệu  </a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Xác minh văn bản </a></li>
+                <!-- <li><a href="#"><i class="fas fa-chart-bar"></i> Báo cáo </a></li> -->
+                <li><a href="#"><i class="fas fa-cog"></i> Cài đặt </a></li>
             </ul>
 
-            <div class="social-icons">
+            <!-- <div class="social-icons">
                 <a href="#"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-xing"></i></a>
                 <a href="#"><i class="fab fa-discord"></i></a>
-            </div>
+            </div> -->
         </div>
    
         <div class="main-content">
-            <div class="header">
-                <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/9ROxZ7hJwzbnBxsHke4ETbqkJCtqmf24iM7jg0jFqeOtQHsnA.jpg" width="40"/>
-                <a class="upgrade-btn" href="#"> Upgrade Now </a>
-            </div>
-            
+
             <div class="content">
                 <div class="card">
                     <div class="icon">
                         <i class="fas fa-pen"></i>
                     </div>
-                    <h3> Sign yourself </h3>
+                    <h3> Ký tài liệu </h3>
                 </div>
                 
                 <div class="card">
                     <div class="icon">
                         <i class="fas fa-paper-plane"></i>
                     </div>
-                    <h3> Request signature </h3>
+                    <h3> Yêu cầu chữ ký </h3>
                 </div>
      
                 <div class="card">
                     <div class="icon">
                         <i class="fas fa-signature"></i>
                     </div>
-                    <h3> Need your Signature </h3>
-                    <div class="data"> 0 </div>
+                    <h3> Vẽ chữ ký của bạn </h3>
+                    <!-- <div class="data"> 0 </div> -->
                 </div>
      
-                <div class="card">
+                <!-- <div class="card">
                     <div class="icon">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
-                    <h3> Out for signatures </h3>
+                    <h3> Trao đổi  </h3>
                     <div class="data"> 1 </div>
-                </div>
+                </div> -->
      
                 <div class="card">
-                    <h3> Recent signature requests </h3>
+                    <h3> Các yêu cầu chữ ký gần đây </h3>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th> Title </th>
-                                <th> File </th>
-                                <th> Owner </th>
-                                <th> Signers </th>
+                                <th> Tiêu đề </th>
+                                <th> Tệp </th>
+                                <th> Chủ sở hữu </th>
+                                <th> Người kí </th>
                             </tr>
                         </thead>
                         
                         <tbody>
                             <tr>
-                                <td class="no-data" colspan="4"> No Data Available </td>
+                                <td class="no-data" colspan="4"> Chưa có dữ liệu </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
      
                 <div class="card">
-                    <h3> Recently sent for signatures </h3>
+                    <h3> Các tài liệu đã kí gần đây </h3>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th> Title </th>
-                                <th> File </th>
-                                <th> Owner </th>
-                                <th> Signers </th>
+                                <th> Tiêu đề </th>
+                                <th> Tệp </th>
+                                <th> Chủ sở hữu </th>
+                                <th> Người kí </th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                <td> Pritam Singh offer letter </td>
-                                <td><a href="#"> Download </a></td>
-                                <td> Andrew Wade </td>
-                                <td><a href="#"> View </a></td>
+                                <td> ... </td>
+                                <td><a href="#"> Tải xuống </a></td>
+                                <td> ... </td>
+                                <td><a href="#"> Xem </a></td>
                             </tr>
                         </tbody>
                     </table>
