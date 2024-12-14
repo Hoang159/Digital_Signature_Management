@@ -98,11 +98,11 @@ body {
     font-size: 15px;
 }
 
-.btn-dangnhap {
+.btn-dangky {
     flex: 0 0 55%; /* Chiếm 60% chiều rộng */
 }
 
-.btn-dangky {
+.btn-dangnhap {
     flex: 0 0 45%; /* Chiếm 40% chiều rộng */
 }
 

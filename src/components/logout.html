@@ -2,9 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/assets/images/logo1.png" type="image/png">
-    <title> Đăng nhập </title>
+    <title> Đăng ký </title>
     <link rel="stylesheet" href="/assets/fonts/googleapis.css">
-    <link rel="stylesheet" href="/src/css/login.css">
+    <link rel="stylesheet" href="/src/css/logout.css">
 </head>
 
 <body>
@@ -13,26 +13,31 @@
             <div class = "left-logo">
                 <img alt="Logo" height="100" src="/assets/images/logo2.png" width="100"/>
             </div>
-            <h2 style="text-align: center;"> Đăng nhập HMPSign</h2>
+            <h2 style="text-align: center;"> Đăng ký HMPSign</h2>
             <!-- <p style="text-align: center; color: #666;"> Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.</p> -->
             
             <form>
                 <div class="form-group">
-                    <label for="username"> Tài khoản </label>
-                    <input id="username" placeholder="Tài khoản của bạn" type="text"/>
+                    <label for="username"> Họ và tên bạn </label>
+                    <input id="username" placeholder="Tên của bạn" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="account"> Tài khoản </label>
+                    <input id="account" placeholder="Tài khoản của bạn" type="text"/>
                 </div>
                 <div class="form-group">
                     <label for="password"> Mật khẩu </label>
                     <input id="password" placeholder="Mật khẩu của bạn" type="password"/>
                     <!-- <a href="#"> Quên mật khẩu? </a> -->
                 </div>
+                
                 <!-- <div class="checkbox-group">
                     <input id="remember" type="checkbox"/>
                     <label for="remember"> Giữ tôi luôn đăng nhập </label>
                 </div> -->
                 <div class="button-container">
-                    <button class="btn btn-dangnhap" type="button" onclick="location.href='/src/components/home.html'">Đăng nhập</button>
-                    <button class="btn btn-dangky" type="button" onclick="location.href='/src/components/logout.html'">Tạo tài khoản</button>
+                    <button class="btn btn-dangky" type="button" onclick="location.href='/src/components/login.html'">Đăng ký</button>
+                    <button class="btn btn-dangnhap" type="button" onclick="location.href='/src/components/login.html'">Đăng nhập</button>
                 </div>
             </form>
         

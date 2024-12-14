@@ -11,6 +11,7 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #e0e0e0;
+    /* position: fixed; */
 }
 .header .header-left {
     display: flex;
@@ -57,7 +58,7 @@ body {
     background-color: #007bff;
     color: #fff;
     text-align: center;
-    padding: 50px 20px;
+    padding: 30px 20px 50px;
 }
 
 .main h1 {
@@ -156,6 +157,24 @@ body {
     font-size: 16px;
 }
 
+.instruction {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.instruction h2 {
+    font-size: 24px;
+}
+
+.instruction p {
+    font-size: 18px;
+}
+
+.instruction video {
+    height: 500px;
+    width: 900px;
+}
+
 .contact {
     background-color: #007bff;
     color: #fff;
@@ -163,7 +182,7 @@ body {
     padding: 50px 20px;
 }
 
-.ontact h1 {
+.contact h1 {
     font-size: 36px;
     margin-bottom: 20px;
 }
