@@ -1,0 +1,116 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/assets/images/logo1.png" type="image/png">
+    <title> HMP Admin Home </title>
+    <link rel="stylesheet" href="/assets/fonts/googleapis.css">
+    <link rel="stylesheet" href="/src/css/admin_home.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <img alt="Logo" src="/assets/images/logo2.png" />
+            <span> HMPSign </span>
+        </div>
+        <div class="dangxuat">
+            <img alt="Avatar" src="/assets/images/avatar.jpg" />
+            <button> Admin <span class="dropdown-arrow"></span></button>
+            <div class="dropdown-content">
+                <a href="#" onclick="showSection('caidat')"><i class="fas fa-cog"></i> Cài đặt </a>
+                <a href="/src/index.html"><i class="fas fa-sign-out-alt"></i> Đăng xuất </a>
+            </div>
+        </div>
+        
+    </div>
+
+    <!--Content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="information">
+                <img alt="User profile picture" src="/assets/images/avatar.jpg"/>
+                <div class="text">
+                    <h2>Admin</h2>
+                    <p>admin</p>
+                </div>
+            </div>
+            <ul>
+                <li><a href="#" onclick="showSection('bangdieukhien')"><i class="fas fa-tachometer-alt"></i> Bảng điều khiển </a></li>
+                <li><a href="#" onclick="showSection('duyet')"><i class="fas fa-paper-plane"></i> Duyệt chữ ký số </a></li>
+                <li><a href="#" onclick="showSection('quanly')"><i class="fas fa-folder"></i> Quản lý chữ ký số </a></li>
+                <li><a href="#" onclick="showSection('caidat')"><i class="fas fa-cog"></i> Cài đặt </a></li>
+            </ul>
+        </div>
+        
+        <!-- Main content -->
+        <div class="main-content">
+
+            <!-- Content sidebar bảng điều khiển -->
+            <div id="bangdieukhien" class="content-section active sb0-bangdieukhien">
+                <div class="card">
+                    <div class="icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h3> Duyệt chữ ký </h3>
+                </div>
+
+                <div class="card">
+                    <div class="icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <h3> Quản lý chữ ký </h3>
+                </div>
+     
+                <div class="card">
+                    <h3> Các yêu cầu chữ ký gần đây </h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Người yêu cầu </th>
+                                <th> Tài khoản </th>
+                                <th> Địa chỉ </th>
+                                <th> Email/Sđt </th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td class="no-data" colspan="4"> Chưa có dữ liệu </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+     
+            </div>
+
+            <!-- Content sidebar duyệt -->
+            <div id="duyet" class="content-section sb1-duyet">
+                <div>
+                    <h1> Duyệt chữ ký số </h1>
+                </div>
+            </div>
+    
+            <!-- Content sidebar quản lý -->
+            <div id="quanly" class="content-section sb2-quanly">
+                <div>
+                    <h1> Quản lý chữ ký số </h1>
+                </div>
+            </div>
+    
+            <!-- Content sidebar cài đặt -->
+            <div id="caidat" class="content-section sb3-caidat">
+                <div>
+                    <h1> Cài đặt </h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/src/js/script.js"></script>
+
+</body>
+</html>

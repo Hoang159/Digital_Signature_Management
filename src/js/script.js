@@ -1,3 +1,4 @@
+// index.html
 // Cuộn đến các phần tương ứng
 document.getElementById('GioiThieu').addEventListener('click', function() {
     document.getElementById('GioiThieuContent').scrollIntoView({ behavior: 'smooth' });
@@ -19,6 +20,7 @@ document.getElementById('LienHe').addEventListener('click', function() {
     document.getElementById('LienHeContent').scrollIntoView({ behavior: 'smooth' });
 });
 
+// home.html
 //hàm chuyển hướng người dùng đến trang "section" khác
 function showSection(section) {
     var sections = document.getElementsByClassName('content-section');
