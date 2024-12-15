@@ -1,3 +1,4 @@
+// Cuộn đến các phần tương ứng
 document.getElementById('GioiThieu').addEventListener('click', function() {
     document.getElementById('GioiThieuContent').scrollIntoView({ behavior: 'smooth' });
 });
@@ -17,4 +18,13 @@ document.getElementById('HuongDan').addEventListener('click', function() {
 document.getElementById('LienHe').addEventListener('click', function() {
     document.getElementById('LienHeContent').scrollIntoView({ behavior: 'smooth' });
 });
+
+//hàm chuyển hướng người dùng đến trang "section" khác
+function showSection(section) {
+    var sections = document.getElementsByClassName('content-section');
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].classList.remove('active');
+    }
+    document.getElementById(section).classList.add('active');
+}
 
