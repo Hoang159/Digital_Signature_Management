@@ -173,6 +173,10 @@ body {
     min-width: 300px;
     text-align: center;
 }
+.sb0-bangdieukhien .card a {
+    text-decoration: none;
+    color: black;
+}
 .sb0-bangdieukhien .card .icon {
     font-size: 40px;
     margin-bottom: 10px;
@@ -208,3 +212,141 @@ body {
     color: #666;
 }
 
+.sb1-dangky {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.sb1-dangky .left-dangky {
+    background-color: #d9eaf7;
+    padding: 40px;
+    flex: 1;
+    min-width: 300px;
+}
+.sb1-dangky .left-dangky h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.sb1-dangky .left-dangky p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.sb1-dangky .left-dangky ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.sb1-dangky .left-dangky ul li {
+    margin-bottom: 10px;
+    padding: 10px 0px;
+}
+.sb1-dangky .left-dangky a {
+    color: #007bff;
+    text-decoration: none;
+}
+.sb1-dangky .right-dangky {
+    padding: 40px 40px 10px 40px;
+    flex: 1;
+    min-width: 300px;
+}
+.sb1-dangky .right-dangky form {
+    display: flex;
+    flex-wrap: wrap;
+}
+.sb1-dangky .right-dangky form .form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.sb1-dangky .right-dangky form .form-group.half {
+    width: 45%;
+    padding-right: 20px;
+}
+/* .sb1-dangky .right-dangky form .form-group.half:nth-child(odd) {
+    margin-right: 4%;
+} */
+.sb1-dangky .right-dangky form label {
+    display: flex;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.sb1-dangky .right-dangky form input,
+.sb1-dangky .right-dangky form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.sb1-dangky .right-dangky form button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.sb1-dangky .right-dangky form button:hover {
+    background-color: #0056b3;
+}
+
+.sb3-xacminh {
+    display: flex;
+    /* justify-content: center;
+    align-items: center;     */
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #d9eaf7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.sb3-xacminh .section-xacminh {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 40%; /* Mỗi phần chiếm 45% chiều rộng */
+    margin: 10px 0 10px 60px; 
+}
+.sb3-xacminh .section-xacminh h2 {
+    margin: 10px 0 10px 0;
+    font-size: 20px;
+    color: #000;
+}
+.sb3-xacminh .section-xacminh .form-group {
+    margin-bottom: 10px;
+}
+.sb3-xacminh .section-xacminh .form-group label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #000;
+}
+.sb3-xacminh .section-xacminh .form-group input[type="text"] {
+    width: calc(100% - 60px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.sb3-xacminh .section-xacminh .form-group button {
+    padding: 10px 20px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ccc;
+    color: #000;
+    cursor: pointer;
+}
+.sb3-xacminh .section-xacminh .form-group button i {
+    margin-left: 5px;
+}
+.sb3-xacminh .section-xacminh .form-group .actions {
+    display: flex;
+    justify-content: flex-end;
+}
+.sb3-xacminh .section-xacminh .form-group .actions button {
+    margin-left: 10px;
+    color: #fff;
+}

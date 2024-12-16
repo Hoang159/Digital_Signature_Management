@@ -60,25 +60,30 @@
             <!-- Content sidebar bảng điều khiển -->
             <div id="bangdieukhien" class="content-section active sb0-bangdieukhien">
                 <div class="card">
+                    <a href="#" onclick="showSection('dangky')">
                     <div class="icon">
                         <i class="fas fa-paper-plane"></i>
                     </div>
                     <h3> Yêu cầu chữ ký </h3>
+                    </a>
                 </div>
 
                 <div class="card">
+                    <a href="#" onclick="showSection('quanly')">
                     <div class="icon">
                         <i class="fas fa-folder"></i>
                     </div>
                     <h3> Xem chữ ký </h3>
+                    </a>
                 </div>
                 
                 <div class="card">
+                    <a href="#" onclick="showSection('xacminh')">
                     <div class="icon">
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <h3> Xác minh văn bản </h3>
-                    <!-- <div class="data"> 0 </div> -->
+                    </a>
                 </div>
      
                 <div class="card">
@@ -89,7 +94,7 @@
                                 <th> Tiêu đề </th>
                                 <th> Tệp </th>
                                 <th> Chủ sở hữu </th>
-                                <th> Người kí </th>
+                                <th> Người cấp </th>
                             </tr>
                         </thead>
                         
@@ -102,7 +107,7 @@
                 </div>
      
                 <div class="card">
-                    <h3> Các tài liệu đã kí gần đây </h3>
+                    <h3> Các tài liệu đã xác minh gần đây </h3>
                     <table class="table">
                         <thead>
                             <tr>
@@ -127,8 +132,61 @@
 
             <!-- Content sidebar đăng ký -->
             <div id="dangky" class="content-section sb1-dangky">
-                <div>
-                    <h1> Đăng ký chữ ký số </h1>
+                <div class="left-dangky">
+                    <h1>Đăng ký chữ ký số</h1>
+                    <p>Điền form để nhận bộ khóa Private Key và Public Key</p>
+                    <ul>
+                        <li>Xác minh danh tính của người gửi văn bản thông qua chữ ký số.</li>
+                        <li>Đảm bảo nội dung không bị chỉnh sửa hoặc giả mạo sau khi ký.</li>
+                        <li>Tăng cường tính bảo mật trong giao dịch, đặc biệt với tài liệu quan trọng.</li>
+                    </ul>
+                </div>
+                <div class="right-dangky">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Họ và tên bạn *</label>
+                            <input type="text" id="name" name="name" placeholder="Tên của bạn" required>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="product">Sản phẩm bạn quan tâm *</label>
+                            <select id="product" name="product" required>
+                                <option value="">--- Chọn giải pháp/ứng dụng bạn quan tâm nhất ---</option>
+                            </select>
+                        </div> -->
+                        <div class="form-group half">
+                            <label for="email">Email của bạn *</label>
+                            <input type="email" id="email" name="email" placeholder="Email của bạn" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="phone">Số điện thoại *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Số điện thoại của bạn" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="position">Vị trí công việc *</label>
+                            <select id="position" name="position" required>
+                                <option value="">-- Lựa chọn vị trí công việc --</option>
+                            </select>
+                        </div>
+                        <div class="form-group half">
+                            <label for="company">Tên công ty *</label>
+                            <input type="text" id="company" name="company" placeholder="Tên công ty của bạn" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="hometown">Quê quán *</label>
+                            <select id="hometown" name="hometown" required>
+                                <option value="">-- Tỉnh/Thành phố --</option>
+                            </select>
+                        </div>
+                        <div class="form-group half">
+                            <label for="citywork">Nơi làm việc *</label>
+                            <select id="citywork" name="citywork" required>
+                                <option value="">-- Tỉnh/Thành phố --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Đăng ký bộ khóa ngay</button>
+                        </div>
+                    </form>
                 </div>
             </div>
     
@@ -141,9 +199,43 @@
     
             <!-- Content sidebar xác minh -->
             <div id="xacminh" class="content-section sb3-xacminh">
-                <div>
-                    <h1> Xác minh văn bản </h1>
+                <div class="section-xacminh">
+                    <h2>Mã hóa văn bản</h2>
+                    <div class="form-group">
+                        <label for="file-sign">Văn bản</label>
+                        <input type="text" id="file-sign" placeholder="Chọn tập tin">
+                        <button><i class="fas fa-upload"></i> Chọn</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="privatekey">Private Key</label>
+                        <input type="text" id="privatekey" placeholder="Chọn Private Key">
+                        <button><i class="fas fa-upload"></i> Chọn</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="result-sign">Kết quả mã hóa</label>
+                        <input type="text" id="result-sign" placeholder="Nội dung">
+                    </div>
+                    <div class="form-group actions">
+                        <button disabled>Xuất kết quả</button>
+                    </div>
                 </div>
+                <div class="section-xacminh">
+                    <h2>Xác thực văn bản</h2>
+                    <div class="form-group">
+                        <label for="file-verify">Văn bản đã mã hóa</label>
+                        <input type="text" id="file-verify" placeholder="Chọn tập tin">
+                        <button><i class="fas fa-upload"></i> Chọn</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="publickey">Public Key</label>
+                        <input type="text" id="publickey" placeholder="Chọn Public key">
+                        <button><i class="fas fa-upload"></i> Chọn</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="result-verify">Kết quả</label>
+                        <input type="text" id="result-verify" placeholder="Nội dung">
+                    </div>
+                </div> 
             </div>
     
             <!-- Content sidebar cài đặt -->
