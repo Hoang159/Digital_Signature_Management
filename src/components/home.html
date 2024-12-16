@@ -1,49 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/assets/images/logo1.png" type="image/png">
+    <link rel="icon" href="../../assets/images/logo1.png" type="image/png">
     <title> HMP Home </title>
-    <link rel="stylesheet" href="/assets/fonts/googleapis.css">
-    <link rel="stylesheet" href="/src/css/home.css">
+    <link rel="stylesheet" href="../../assets/fonts/googleapis.css">
+    <link rel="stylesheet" href="../../src/css/home.css">
 </head>
 
 <body>
 
-    <!-- Header -->
     <div class="header">
         <div class="logo">
-            <img alt="Logo" src="/assets/images/logo2.png" />
+            <img alt="Logo" src="../../assets/images/logo2.png" />
             <span> HMPSign </span>
         </div>
         <div class="dangxuat">
-            <img alt="Avatar" src="/assets/images/avatar.jpg" />
-            <button> Tên người dùng <span class="dropdown-arrow"></span></button>
-            <div class="dropdown-content">
-                <a href="#" onclick="showSection('caidat')"><i class="fas fa-cog"></i> Cài đặt </a>
-                <a href="/src/index.html"><i class="fas fa-sign-out-alt"></i> Đăng xuất </a>
-            </div>
+            <img alt="Avatar" src="../../assets/images/avatar.jpg" />
+            <button> Tên người dùng </button>
         </div>
-        
     </div>
 
-    <!--Content -->
     <div class="container">
-        <!-- Sidebar -->
         <div class="sidebar">
             <div class="information">
-                <img alt="User profile picture" src="/assets/images/avatar.jpg"/>
+                <img alt="User profile picture" src="../../assets/images/avatar.jpg"/>
                 <div class="text">
-                    <h2>Tên người dùng</h2>
+                    <h2>Tên người dùn</h2>
                     <p>Tên tài khoản</p>
                 </div>
             </div>
             <ul>
-                <li><a href="#" onclick="showSection('bangdieukhien')"><i class="fas fa-tachometer-alt"></i> Bảng điều khiển </a></li>
-                <li><a href="#" onclick="showSection('dangky')"><i class="fas fa-paper-plane"></i> Đăng ký chữ ký số </a></li>
-                <li><a href="#" onclick="showSection('quanly')"><i class="fas fa-folder"></i> Xem chữ ký số </a></li>
-                <li><a href="#" onclick="showSection('xacminh')"><i class="fas fa-file-alt"></i> Xác minh văn bản </a></li>
-                <li><a href="#" onclick="showSection('caidat')"><i class="fas fa-cog"></i> Cài đặt </a></li>
-                <!-- <li><a href="#"><i class="fas fa-pen"></i> Ký tài liệu  </a></li> -->
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Bảng điều khiển </a></li>
+                <li><a href="#"><i class="fas fa-paper-plane"></i> Yêu cầu chữ ký số </a></li>
+                <li><a href="#"><i class="fas fa-folder"></i> Xem chữ ký số </a></li>
+                <li><a href="#"><i class="fas fa-pen"></i> Ký tài liệu  </a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Xác minh văn bản </a></li>
+                <!-- <li><a href="#"><i class="fas fa-chart-bar"></i> Báo cáo </a></li> -->
+                <li><a href="#"><i class="fas fa-cog"></i> Cài đặt </a></li>
             </ul>
 
             <!-- <div class="social-icons">
@@ -53,38 +47,39 @@
                 <a href="#"><i class="fab fa-discord"></i></a>
             </div> -->
         </div>
-        
-        <!-- Main content -->
+   
         <div class="main-content">
 
-            <!-- Content sidebar bảng điều khiển -->
-            <div id="bangdieukhien" class="content-section active sb0-bangdieukhien">
+            <div class="content">
                 <div class="card">
-                    <a href="#" onclick="showSection('dangky')">
+                    <div class="icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <h3> Ký tài liệu </h3>
+                </div>
+                
+                <div class="card">
                     <div class="icon">
                         <i class="fas fa-paper-plane"></i>
                     </div>
                     <h3> Yêu cầu chữ ký </h3>
-                    </a>
                 </div>
-
+     
                 <div class="card">
-                    <a href="#" onclick="showSection('quanly')">
                     <div class="icon">
-                        <i class="fas fa-folder"></i>
+                        <i class="fas fa-signature"></i>
                     </div>
-                    <h3> Xem chữ ký </h3>
-                    </a>
+                    <h3> Vẽ chữ ký của bạn </h3>
+                    <!-- <div class="data"> 0 </div> -->
                 </div>
-                
-                <div class="card">
-                    <a href="#" onclick="showSection('xacminh')">
+     
+                <!-- <div class="card">
                     <div class="icon">
-                        <i class="fas fa-file-alt"></i>
+                        <i class="fas fa-exchange-alt"></i>
                     </div>
-                    <h3> Xác minh văn bản </h3>
-                    </a>
-                </div>
+                    <h3> Trao đổi  </h3>
+                    <div class="data"> 1 </div>
+                </div> -->
      
                 <div class="card">
                     <h3> Các yêu cầu chữ ký gần đây </h3>
@@ -94,7 +89,7 @@
                                 <th> Tiêu đề </th>
                                 <th> Tệp </th>
                                 <th> Chủ sở hữu </th>
-                                <th> Người cấp </th>
+                                <th> Người kí </th>
                             </tr>
                         </thead>
                         
@@ -107,7 +102,7 @@
                 </div>
      
                 <div class="card">
-                    <h3> Các tài liệu đã xác minh gần đây </h3>
+                    <h3> Các tài liệu đã kí gần đây </h3>
                     <table class="table">
                         <thead>
                             <tr>
@@ -129,126 +124,8 @@
                     </table>
                 </div>
             </div>
-
-            <!-- Content sidebar đăng ký -->
-            <div id="dangky" class="content-section sb1-dangky">
-                <div class="left-dangky">
-                    <h1>Đăng ký chữ ký số</h1>
-                    <p>Điền form để nhận bộ khóa Private Key và Public Key</p>
-                    <ul>
-                        <li>Xác minh danh tính của người gửi văn bản thông qua chữ ký số.</li>
-                        <li>Đảm bảo nội dung không bị chỉnh sửa hoặc giả mạo sau khi ký.</li>
-                        <li>Tăng cường tính bảo mật trong giao dịch, đặc biệt với tài liệu quan trọng.</li>
-                    </ul>
-                </div>
-                <div class="right-dangky">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Họ và tên bạn *</label>
-                            <input type="text" id="name" name="name" placeholder="Tên của bạn" required>
-                        </div>
-                        <!-- <div class="form-group">
-                            <label for="product">Sản phẩm bạn quan tâm *</label>
-                            <select id="product" name="product" required>
-                                <option value="">--- Chọn giải pháp/ứng dụng bạn quan tâm nhất ---</option>
-                            </select>
-                        </div> -->
-                        <div class="form-group half">
-                            <label for="email">Email của bạn *</label>
-                            <input type="email" id="email" name="email" placeholder="Email của bạn" required>
-                        </div>
-                        <div class="form-group half">
-                            <label for="phone">Số điện thoại *</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Số điện thoại của bạn" required>
-                        </div>
-                        <div class="form-group half">
-                            <label for="position">Vị trí công việc *</label>
-                            <select id="position" name="position" required>
-                                <option value="">-- Lựa chọn vị trí công việc --</option>
-                            </select>
-                        </div>
-                        <div class="form-group half">
-                            <label for="company">Tên công ty *</label>
-                            <input type="text" id="company" name="company" placeholder="Tên công ty của bạn" required>
-                        </div>
-                        <div class="form-group half">
-                            <label for="hometown">Quê quán *</label>
-                            <select id="hometown" name="hometown" required>
-                                <option value="">-- Tỉnh/Thành phố --</option>
-                            </select>
-                        </div>
-                        <div class="form-group half">
-                            <label for="citywork">Nơi làm việc *</label>
-                            <select id="citywork" name="citywork" required>
-                                <option value="">-- Tỉnh/Thành phố --</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit">Đăng ký bộ khóa ngay</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-    
-            <!-- Content sidebar quản lý -->
-            <div id="quanly" class="content-section sb2-quanly">
-                <div>
-                    <h1> Xem chữ ký số </h1>
-                </div>
-            </div>
-    
-            <!-- Content sidebar xác minh -->
-            <div id="xacminh" class="content-section sb3-xacminh">
-                <div class="section-xacminh">
-                    <h2>Mã hóa văn bản</h2>
-                    <div class="form-group">
-                        <label for="file-sign">Văn bản</label>
-                        <input type="text" id="file-sign" placeholder="Chọn tập tin">
-                        <button><i class="fas fa-upload"></i> Chọn</button>
-                    </div>
-                    <div class="form-group">
-                        <label for="privatekey">Private Key</label>
-                        <input type="text" id="privatekey" placeholder="Chọn Private Key">
-                        <button><i class="fas fa-upload"></i> Chọn</button>
-                    </div>
-                    <div class="form-group">
-                        <label for="result-sign">Kết quả mã hóa</label>
-                        <input type="text" id="result-sign" placeholder="Nội dung">
-                    </div>
-                    <div class="form-group actions">
-                        <button disabled>Xuất kết quả</button>
-                    </div>
-                </div>
-                <div class="section-xacminh">
-                    <h2>Xác thực văn bản</h2>
-                    <div class="form-group">
-                        <label for="file-verify">Văn bản đã mã hóa</label>
-                        <input type="text" id="file-verify" placeholder="Chọn tập tin">
-                        <button><i class="fas fa-upload"></i> Chọn</button>
-                    </div>
-                    <div class="form-group">
-                        <label for="publickey">Public Key</label>
-                        <input type="text" id="publickey" placeholder="Chọn Public key">
-                        <button><i class="fas fa-upload"></i> Chọn</button>
-                    </div>
-                    <div class="form-group">
-                        <label for="result-verify">Kết quả</label>
-                        <input type="text" id="result-verify" placeholder="Nội dung">
-                    </div>
-                </div> 
-            </div>
-    
-            <!-- Content sidebar cài đặt -->
-            <div id="caidat" class="content-section sb4-caidat">
-                <div>
-                    <h1> Cài đặt </h1>
-                </div>
-            </div>
-
         </div>
     </div>
-
-    <script src="/src/js/script.js"></script>
 
 </body>
 </html>
