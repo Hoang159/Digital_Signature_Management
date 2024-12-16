@@ -192,9 +192,33 @@
     
             <!-- Content sidebar quản lý -->
             <div id="quanly" class="content-section sb2-quanly">
-                <div>
-                    <h1> Xem chữ ký số </h1>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Thứ tự</th>
+                            <th>Tiêu đề</th>
+                            <th>Thông tin</th>
+                            <th>Người sở hữu</th>
+                            <th>Tải xuống</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Public Key</td>
+                            <td><a href="#">View</a></td>
+                            <td>Tên người dùng</td>
+                            <td><a href="#">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Private Key</td>
+                            <td><a href="#">View</a></td>
+                            <td>Tên người dùng</td>
+                            <td><a href="#">Download</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
     
             <!-- Content sidebar xác minh -->
@@ -240,8 +264,52 @@
     
             <!-- Content sidebar cài đặt -->
             <div id="caidat" class="content-section sb4-caidat">
-                <div>
-                    <h1> Cài đặt </h1>
+                <div class="info-section">
+                    <h2>Thông tin đăng nhập</h2>
+                    <div class="info-item">
+                        <span class="info-label">Tài khoản</span>
+                        <span class="info-value"> Tên tài khoản </span>
+                        <span class="change-link-placeholder"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Mật khẩu</span>
+                        <span class="info-value"> ******** </span>
+                        <a href="#" class="change-link">Thay đổi</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Số điện thoại</span>
+                        <span class="info-value">(Chưa có thông tin) </span>
+                        <a href="#" class="change-link">Thay đổi</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email</span>
+                        <span class="info-value">(Chưa có thông tin) </span>
+                        <a href="#" class="change-link">Thay đổi</a>
+                    </div>
+                    
+                </div>
+                <div class="info-section">
+                    <h2>Thông tin cá nhân <a href="#" class="change-link">Thay đổi</a></h2>
+                    <div class="info-item">
+                        <span class="info-label">Họ và Tên</span>
+                        <span class="info-value">Tên</span>
+                        <span class="change-link-placeholder"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Giới tính</span>
+                        <span class="info-value">Nam</span>
+                        <span class="change-link-placeholder"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Ngày sinh</span>
+                        <span class="info-value">x/x/2003</span>
+                        <span class="change-link-placeholder"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Địa chỉ</span>
+                        <span class="info-value">ĐHBK</span>
+                        <span class="change-link-placeholder"></span>
+                    </div>
                 </div>
             </div>
 
