@@ -5,17 +5,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* background: linear-gradient(to bottom, #fff, #fff 50%, #1a73e8 100%, #1a73e8); */
     background: #1a73e8;
-
 }
+
 .container {
     display: flex;
     width: 600px;
-    /* height: 660px; */
-    height: 550px;
+    height: 660px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .left {
     flex: 1;
     padding: 40px;
@@ -23,73 +22,53 @@ body {
 }
 
 .left .left-logo {
-    text-align: center; 
+    text-align: center;
     margin-bottom: 20px;
 }
 
-/* .right {
-    flex: 1;
-    background: #1a73e8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
 }
-.right img {
-    width: 100px;
-}
-.right::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: url('https://placehold.co/800x100') no-repeat center bottom;
-    background-size: cover;
-} */
 
 .form-group {
     margin-bottom: 20px;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
+
 .form-group input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 .form-group a {
     float: right;
     text-decoration: none;
     color: #1a73e8;
     padding-top: 10px;
 }
+
 .form-group a:hover {
     text-decoration: underline;
-}
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.checkbox-group input {
-    margin-right: 10px;
 }
 
 .button-container {
     display: flex;
-    justify-content: center; /* Căn giữa nút trên trục ngang */
-    gap: 10px; /* Khoảng cách giữa các nút */
+    justify-content: center;
+    gap: 10px;
 }
 
 .btn {
     text-decoration: none;
-    padding: 13px 40px; /* Tùy chỉnh kích thước nút */
+    padding: 13px 40px;
     background: #1a73e8;
     color: #fff;
     border: none;
@@ -99,67 +78,23 @@ body {
 }
 
 .btn-dangky {
-    flex: 0 0 55%; /* Chiếm 60% chiều rộng */
-}
-
-.btn-dangnhap {
-    flex: 0 0 45%; /* Chiếm 40% chiều rộng */
-}
-
-.btn a {
-    text-decoration: none;
-    color: #fff; /* Giữ màu chữ trắng để phù hợp với nút */
+    flex: 0 0 100%;
 }
 
 .btn:hover {
     background: #155ab6;
 }
 
-.sso {
+p {
     text-align: center;
     margin-top: 20px;
-    color: #666;
-}
-.sso-buttons {
-    display: flex;
-    flex-direction: column; /* Các button sẽ xếp theo chiều dọc */
-    gap: 10px;
-    margin-top: 10px;
 }
 
-.sso-buttons button {
-    display: flex;
-    align-items: center;  /* Căn giữa nội dung theo chiều dọc */
-    justify-content: flex-start; /* Căn nội dung bắt đầu từ bên trái */
-    padding: 10px 20px;
-    /* padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px; */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    width: 100%; /* Chiếm toàn bộ chiều rộng của button container */
+p a {
+    color: #1a73e8;
+    text-decoration: none;
 }
 
-.sso-buttons button .icon {
-    flex: 0 0 20%; /* Icon chiếm 30% chiều rộng của button */
-    padding-left: 100px;
-    font-size: 20px; /* Điều chỉnh kích thước icon */
-    display: flex;
-    justify-content: center; /* Căn giữa icon theo chiều ngang */
-    align-items: center; /* Căn giữa icon theo chiều dọc */
-}
-
-.sso-buttons button .text {
-    flex: 1; /* Text chiếm phần còn lại (70%) */
-    display: flex;
-    align-items: center; /* Căn giữa text theo chiều dọc */
-    justify-content: flex-start; /* Đảm bảo text nằm bên trái */
-}
-
-
-.sso-buttons button:hover {
-    background: #f1f1f1;
+p a:hover {
+    text-decoration: underline;
 }

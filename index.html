@@ -1,50 +1,50 @@
-<html>
+<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/assets/images/logo1.png" type="image/png">
+    <link rel="icon" href="assets/images/logo1.png" type="image/png">
     <title> HMP Sign </title>
-    <link rel="stylesheet" href="/assets/fonts/googleapis.css">
-    <link rel="stylesheet" href="/src/css/trangchu.css">
+    <link rel="stylesheet" href="assets/fonts/googleapis.css">
+    <link rel="stylesheet" href="src/css/trangchu.css">
 </head>
 
 <body>
     <div class="header">
         <div class="header-left">
             <div class="logo-container">
-                <img alt="Company Logo" src="/assets/images/logo2.png" class="logo-image">
+                <img alt="Company Logo" src="assets/images/logo2.png" class="logo-image">
                 <span class="logo-text">HMPSign</span>
             </div>
             <nav>
-                <a href="javascript:void(0);" id="GioiThieu"> GIỚI THIỆU </a>
+                <a href="#"> SẢN PHẨM </a>
                 <a href="javascript:void(0);" id="TinhNangLink1"> TÍNH NĂNG </a>
-                <a href="javascript:void(0);" id="HuongDan"> HƯỚNG DẪN </a>
                 <a href="javascript:void(0);" id="LienHe"> LIÊN HỆ </a>
             </nav>
         </div>
         <div class="cta">
-            <a href="/src/components/signin.html"> Đăng nhập </a>
-            <a href="/src/components/signup.html"> Đăng ký </a>
+            <a href="database/signin.php"> Đăng nhập </a>
+            <a href="database/signup.php"> Đăng ký </a>
         </div>
     </div>
       
-    <div class="main" id="GioiThieuContent">
+    <div class="main">
         <h1> HMP Sign </h1>
         <p> Ứng dụng quản lý chữ ký số cho bạn </p>
-        <p> Đăng ký và quản lý chữ ký số ngay trên ứng dụng của HMP Sign</p>
+        <p> Sử dụng chữ ký số ngay trên các ứng dụng của HMP Sign</p>
        
         <div class="buttons">
-            <a href="/src/components/signup.html"> Đăng ký </a>
+            <a href="database/signup.php"> Đăng ký </a>
             <a href="javascript:void(0);" id="TinhNangLink2"> Xem chi tiết tính năng </a>
         </div>
     </div>
       
     <div class="content" id="TinhNangContent">
-        <h2> Đăng ký và quản lý chữ ký số </h2>
-        <p> Doanh nghiệp hoặc cá nhân có thể đăng ký và quản lý chữ ký số với hệ thống của HMP Sign</p>
+        <h2> Đăng ký và tích hợp chữ ký số </h2>
+        <p> Doanh nghiệp hoặc cá nhân có thể đăng ký chữ ký số và tích hợp chữ ký với hệ thống của HMP Sign</p>
     
         <div class="content-wrapper">
             <div class="image-container">
-                <img src="/assets/images/logo1.png" alt="Screenshot of electronic signature registration form">
+                <img src="assets/images/logo1.png" alt="Screenshot of electronic signature registration form">
             </div>
             <div class="text-container">
                 <ul>
@@ -53,34 +53,25 @@
                             <i class="fas fa-check-circle"></i>
                             <span class="highlight">Đăng ký chữ ký:</span>
                         </div>
-                        <p>Khách hàng đăng ký chữ ký trên ứng dụng</p>
+                        <p>Khách hàng đăng ký chữ ký với đơn vị cung cấp</p>
+                    </li>
+                    <li>
+                        <div class="check-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="highlight">Tích hợp chữ ký:</span>
+                        </div>
+                        <p>Chữ ký được tích hợp để ký trên hệ thống của HMP Sign</p>
                     </li>
                     <li>
                         <div class="check-item">
                             <i class="fas fa-check-circle"></i>
                             <span class="highlight">Dễ dàng quản lý:</span>
                         </div>
-                        <p>Dễ dàng quản lý chữ ký điện tử mà khách hàng đăng ký</p>
+                        <p>Dễ dàng quản lý các chữ ký điện tử mà khách hàng đăng ký</p>
                     </li>
-                    <li>
-                        <div class="check-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="highlight">Xác minh văn bản:</span>
-                        </div>
-                        <p>Khách hàng có thể xác minh người gửi văn bản trên hệ thống của HMP Sign</p>
-                    </li>
-                    
                 </ul>
             </div>
         </div>
-    </div>
-
-    <div class="instruction" id="HuongDanContent">
-        <h2> Hướng dẫn </h2>
-        <p>Video hướng dẫn sử dụng ứng dụng HMP Sign</p>
-        <video src="/assets/videos/test.mp4" type="video/mp4" autoplay="autoplay" controls>
-
-        </video>
     </div>
     
     <div class="contact" id="LienHeContent">
@@ -97,6 +88,6 @@
         <select><option> Stratury </option></select>
     </div> -->
 
-    <script src="/src/js/script.js"></script>
+    <script src="src/js/script.js"></script>
 </body>
 </html>
