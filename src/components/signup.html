@@ -1,70 +1,50 @@
-<html>
+<!DOCTYPE html>
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/assets/images/logo1.png" type="image/png">
+    <link rel="icon" href="assets/images/logo1.png" type="image/png">
     <title> Đăng ký </title>
-    <link rel="stylesheet" href="/assets/fonts/googleapis.css">
-    <link rel="stylesheet" href="/src/css/signup.css">
+    <link rel="stylesheet" href="assets/fonts/googleapis.css">
+    <link rel="stylesheet" href="../src/css/signup.css">
 </head>
 
 <body>
     <div class="container">
         <div class="left">
-            <div class = "left-logo">
-                <img alt="Logo" height="100" src="/assets/images/logo2.png" width="100"/>
+            <div class="left-logo">
+                <img alt="Logo" height="100" src="../assets/images/logo2.png" width="100"/>
             </div>
-            <h2 style="text-align: center;"> Đăng ký HMPSign</h2>
-            <!-- <p style="text-align: center; color: #666;"> Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.</p> -->
-            
-            <form>
+            <h2 style="text-align: center;"> Đăng ký tài khoản HMPSign </h2>
+            <!-- Hiển thị thông báo lỗi nếu có -->
+              <?php if (!empty($error_message)): ?>
+              <p style="color: red;"><?php echo $error_message; ?></p>
+              <?php endif; ?>
+
+            <!-- Hiển thị thông báo thành công nếu có -->
+             <?php if (!empty($success_message)): ?>
+             <p style="color: green;"><?php echo $success_message; ?></p>
+             <?php endif; ?>
+            <!-- Form đăng ký -->
+            <form action="signup.php" method="POST">
                 <div class="form-group">
-                    <label for="username"> Họ và tên bạn </label>
-                    <input id="username" placeholder="Tên của bạn" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label for="account"> Tài khoản </label>
-                    <input id="account" placeholder="Tài khoản của bạn" type="text"/>
+                    <label for="username"> Tài khoản </label>
+                    <input id="username" name="username" placeholder="Tên đăng nhập" type="text" required/>
                 </div>
                 <div class="form-group">
                     <label for="password"> Mật khẩu </label>
-                    <input id="password" placeholder="Mật khẩu của bạn" type="password"/>
-                    <!-- <a href="#"> Quên mật khẩu? </a> -->
+                    <input id="password" name="password" placeholder="Mật khẩu" type="password" required/>
                 </div>
-                
-                <!-- <div class="checkbox-group">
-                    <input id="remember" type="checkbox"/>
-                    <label for="remember"> Giữ tôi luôn đăng nhập </label>
-                </div> -->
+                <div class="form-group">
+                    <label for="confirm_password"> Xác nhận mật khẩu </label>
+                    <input id="confirm_password" name="confirm_password" placeholder="Nhập lại mật khẩu" type="password" required/>
+                </div>
+
                 <div class="button-container">
-                    <button class="btn btn-dangky" type="button" onclick="location.href='/src/components/signin.html'">Đăng ký</button>
-                    <button class="btn btn-dangnhap" type="button" onclick="location.href='/src/components/signin.html'">Đã có tài khoản</button>
+                    <button class="btn btn-dangky" type="submit">Đăng ký</button>
                 </div>
             </form>
-        
-            <!-- <div class="sso">
-                <p> Hoặc </p>
-                <div class="sso-buttons">
-                    <button>
-                        <span class="icon"><i class="fab fa-google"></i></span>
-                        <span class="text">Đăng nhập bằng Google</span>
-                    </button>
-                    <button>
-                        <span class="icon"><i class="fab fa-microsoft"></i></span>
-                        <span class="text">Đăng nhập bằng Microsoft</span>
-                    </button>
-                    <button>
-                        <span class="icon"><i class="fab fa-facebook"></i></span>
-                        <span class="text">Đăng nhập bằng Facebook</span>
-                    </button>
-                </div>
-            </div> -->
-            
-        </div>
-        
-        <!-- <div class="right">
-            <img alt="Background Logo" height="100" src="https://storage.googleapis.com/a1aa/image/QBgepgHDcbTHPagdLYEJWIfNI0s80O3B1xdPzoGTkMzEVawTA.jpg" width="100"/>
-        </div> -->
-    </div>
 
+            <p style="text-align: center;">Đã có tài khoản? <a href="signin.php">Đăng nhập</a></p>
+        </div>
+    </div>
 </body>
 </html>
