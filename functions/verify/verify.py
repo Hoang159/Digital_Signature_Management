@@ -7,20 +7,6 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA256
 
-# # Thông tin kết nối đến MySQL
-# timeout = 10
-# connection = pymysql.connect(
-#     charset="utf8mb4",
-#     connect_timeout=timeout,
-#     cursorclass=pymysql.cursors.DictCursor,
-#     db="defaultdb",
-#     host="chuky-chuky12.i.aivencloud.com",
-#     password="AVNS_2bScz_n3ex0i5iYM7dZ",
-#     read_timeout=timeout,
-#     port=28661,
-#     user="avnadmin",
-#     write_timeout=timeout,
-# )
 
 # Hàm băm nội dung file
 def hash_file(file_path):

@@ -1,19 +1,5 @@
 import pymysql
 
-# # Kết nối đến MySQL server trên Aiven
-# timeout = 10
-# connection = pymysql.connect(
-#     charset="utf8mb4",
-#     connect_timeout=timeout,
-#     cursorclass=pymysql.cursors.DictCursor,
-#     db="defaultdb",
-#     host="chuky-chuky12.i.aivencloud.com",
-#     password="AVNS_2bScz_n3ex0i5iYM7dZ",
-#     read_timeout=timeout,
-#     port=28661,
-#     user="avnadmin",
-#     write_timeout=timeout,
-# )
 
 try:
     cursor = connection.cursor()
