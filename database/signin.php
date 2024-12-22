@@ -1,5 +1,5 @@
 <?php
-include 'db_account.php'; // Kết nối cơ sở dữ liệu cho users
+include 'connect_pdo.php'; // Kết nối cơ sở dữ liệu cho users
 
 session_start(); 
 

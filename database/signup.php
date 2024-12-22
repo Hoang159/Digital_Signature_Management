@@ -1,5 +1,5 @@
 <?php
-include 'db_account.php';
+include 'connect_pdo.php';
 session_start();
 
 // Khởi tạo biến lưu thông báo lỗi hoặc thành công
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute([$username]);
         $user = $stmt->fetch();
 
-        if ($user) {
+        if ($user || $username == "admin") {
             $error_message = "Tên đăng nhập đã tồn tại. Vui lòng thử lại!";
         } else {
             // Thêm người dùng mới vào cơ sở dữ liệu

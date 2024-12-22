@@ -20,7 +20,7 @@
             <img alt="Avatar" src="../../assets/images/avatar.jpg" />
             <button> Admin <span class="dropdown-arrow"></span></button>
             <div class="dropdown-content">
-                <a href="#" onclick="showSection('caidat')"><i class="fa-solid fa-gear"></i> Cài đặt </a>
+                <a href="#" onclick="showSection('admin_caidat')"><i class="fa-solid fa-gear"></i> Cài đặt </a>
                 <a href="../../index.html"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất </a>
 
             </div>
@@ -40,10 +40,10 @@
                 </div>
             </div>
             <ul>
-                <li><a href="#" onclick="showSection('bangdieukhien')"><i class="fa-solid fa-gauge-high"></i> Bảng điều khiển </a></li>
-                <li><a href="#" onclick="showSection('duyet')"><i class="fa-solid fa-square-check"></i> Duyệt chữ ký số </a></li>
-                <li><a href="#" onclick="showSection('quanly')"><i class="fa-solid fa-folder"></i> Quản lý chữ ký số </a></li>
-                <li><a href="#" onclick="showSection('caidat')"><i class="fa-solid fa-gear"></i> Cài đặt </a></li>
+                <li><a href="#" onclick="showSection('admin_bangdieukhien')"><i class="fa-solid fa-gauge-high"></i> Bảng điều khiển </a></li>
+                <li><a href="#" onclick="showSection('admin_duyet')"><i class="fa-solid fa-square-check"></i> Duyệt chữ ký số </a></li>
+                <li><a href="#" onclick="showSection('admin_quanly')"><i class="fa-solid fa-folder"></i> Quản lý chữ ký số </a></li>
+                <li><a href="#" onclick="showSection('admin_caidat')"><i class="fa-solid fa-gear"></i> Cài đặt </a></li>
             </ul>
         </div>
         
@@ -51,19 +51,23 @@
         <div class="main-content">
 
             <!-- Content sidebar bảng điều khiển -->
-            <div id="bangdieukhien" class="content-section active sb0-bangdieukhien">
+            <div id="admin_bangdieukhien" class="content-section active sb0-bangdieukhien">
                 <div class="card">
-                    <div class="icon">
-                        <i class="fa-solid fa-square-check"></i>
-                    </div>
-                    <h3> Duyệt chữ ký </h3>
+                    <a href="#" onclick="showSection('admin_duyet')">
+                        <div class="icon">
+                            <i class="fa-solid fa-square-check"></i>
+                        </div>
+                        <h3> Duyệt chữ ký </h3>
+                    </a>
                 </div>
 
                 <div class="card">
-                    <div class="icon">
-                        <i class="fa-solid fa-folder"></i>
-                    </div>
-                    <h3> Quản lý chữ ký </h3>
+                    <a href="#" onclick="showSection('admin_quanly')">
+                        <div class="icon">
+                            <i class="fa-solid fa-folder"></i>
+                        </div>
+                        <h3> Quản lý chữ ký </h3>
+                    </a>
                 </div>
      
                 <div class="card">
@@ -89,24 +93,18 @@
             </div>
 
             <!-- Content sidebar duyệt -->
-            <div id="duyet" class="content-section sb1-duyet">
-                <div>
-                    <h1> Duyệt chữ ký số </h1>
-                </div>
+            <div id="admin_duyet" class="content-section sb1-duyet">
+                
             </div>
     
             <!-- Content sidebar quản lý -->
-            <div id="quanly" class="content-section sb2-quanly">
-                <div>
-                    <h1> Quản lý chữ ký số </h1>
-                </div>
+            <div id="admin_quanly" class="content-section sb2-quanly">
+                
             </div>
     
             <!-- Content sidebar cài đặt -->
-            <div id="caidat" class="content-section sb3-caidat">
-                <div>
-                    <h1> Cài đặt </h1>
-                </div>
+            <div id="admin_caidat" class="content-section sb3-caidat">
+                
             </div>
 
         </div>
