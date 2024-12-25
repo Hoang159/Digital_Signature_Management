@@ -1,0 +1,13 @@
+I. Hướng dẫn chạy dự án
+    1. Có thể git clone dự án theo file README.md hoặc tải trực tiếp về. (git clone https://github.com/Hoang159/Digital_Signature_Management)
+    2. Cài đặt XAMPP, bật Apache và MySQL.
+    3. Vào localhost/phpmyadmin để vào cơ sở dữ liệu.
+    4. Bấm New tạo database mới, nhập tên digital_signature_management.
+    5. Import file digital_signature_management.sql trong thư mục database.
+    6. Mở file index.html, chạy localhost và sẽ sử dụng được web.
+
+II. Thông tin tài khoản
+    1. Tài khoản dành cho users (TK-MK): test - test
+        Có thể tự đăng ký
+    2. Tài khoản dành cho admin (TK-MK): admin - admin
+        Không thể tự đăng ký, có thể thay đổi ở bảng admins trong database
