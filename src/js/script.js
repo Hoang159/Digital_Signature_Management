@@ -1,24 +1,27 @@
 // index.html
 // Cuộn đến các phần tương ứng
-document.getElementById('GioiThieu').addEventListener('click', function() {
-    document.getElementById('GioiThieuContent').scrollIntoView({ behavior: 'smooth' });
-});
+if (window.location.pathname.includes('index.html')) {
+// Chỉ chạy mã nếu đang ở file index.html
+    document.getElementById('GioiThieu').addEventListener('click', function() {
+        document.getElementById('GioiThieuContent').scrollIntoView({ behavior: 'smooth' });
+    });
 
-document.getElementById('TinhNangLink1').addEventListener('click', function() {
-    document.getElementById('TinhNangContent').scrollIntoView({ behavior: 'smooth' });
-});
+    document.getElementById('TinhNangLink1').addEventListener('click', function() {
+        document.getElementById('TinhNangContent').scrollIntoView({ behavior: 'smooth' });
+    });
 
-document.getElementById('TinhNangLink2').addEventListener('click', function() {
-    document.getElementById('TinhNangContent').scrollIntoView({ behavior: 'smooth' });
-});
+    document.getElementById('TinhNangLink2').addEventListener('click', function() {
+        document.getElementById('TinhNangContent').scrollIntoView({ behavior: 'smooth' });
+    });
 
-document.getElementById('HuongDan').addEventListener('click', function() {
-    document.getElementById('HuongDanContent').scrollIntoView({ behavior: 'smooth' });
-});
+    document.getElementById('HuongDan').addEventListener('click', function() {
+        document.getElementById('HuongDanContent').scrollIntoView({ behavior: 'smooth' });
+    });
 
-document.getElementById('LienHe').addEventListener('click', function() {
-    document.getElementById('LienHeContent').scrollIntoView({ behavior: 'smooth' });
-});
+    document.getElementById('LienHe').addEventListener('click', function() {
+        document.getElementById('LienHeContent').scrollIntoView({ behavior: 'smooth' });
+    });
+}
 
 // home.html và admin_home.html
 //hàm chuyển hướng người dùng đến trang "section" khác

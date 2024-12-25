@@ -176,36 +176,23 @@ body {
 }
 
 .contact {
-    background-color: #007bff;
-    color: #fff;
     text-align: center;
-    padding: 50px 20px;
-}
-
-.contact h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-
-/* .form-container {
-    background-color: #d0e0ff;
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    text-align: left;
-}
-.form-container h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-.form-container input, .form-container select {
-    width: calc(50% - 10px);
     padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+
+    /* display: block; */
 }
-.form-container input[type="text"] {
-    width: calc(100% - 20px);
-} */
+
+.contact table {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0;
+}
+
+.contact table th,td {
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+}

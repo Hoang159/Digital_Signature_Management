@@ -1,7 +1,7 @@
 
 
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="../../assets/images/logo1.png" type="image/png">
@@ -41,26 +41,32 @@
                 <label for="phone">Số điện thoại *</label>
                 <input type="tel" id="phone" name="phone" placeholder="Số điện thoại của bạn" required>
             </div>
-            <div class="form-group half">
+            <!-- <div class="form-group half">
                 <label for="position">Vị trí công việc *</label>
                 <select id="position" name="position" required>
                     <option value="">-- Lựa chọn vị trí công việc --</option>
                 </select>
-            </div>
-            <div class="form-group half">
+            </div> -->
+            <!-- <div class="form-group half">
                 <label for="company">Tên công ty *</label>
                 <input type="text" id="company" name="company" placeholder="Tên công ty của bạn" required>
-            </div>
+            </div> -->
             <div class="form-group half">
                 <label for="hometown">Quê quán *</label>
                 <select id="hometown" name="hometown" required>
                     <option value="">-- Tỉnh/Thành phố --</option>
+                    <option value="Khu vực miền Bắc">Khu vực miền Bắc</option>
+                    <option value="Khu vực miền Trung">Khu vực miền Trung</option>
+                    <option value="Khu vực miền Nam">Khu vực miền Nam</option>
                 </select>
             </div>
             <div class="form-group half">
                 <label for="citywork">Nơi làm việc *</label>
                 <select id="citywork" name="citywork" required>
                     <option value="">-- Tỉnh/Thành phố --</option>
+                    <option value="Khu vực miền Bắc">Khu vực miền Bắc</option>
+                    <option value="Khu vực miền Trung">Khu vực miền Trung</option>
+                    <option value="Khu vực miền Nam">Khu vực miền Nam</option>
                 </select>
             </div>
             <div class="form-group">
@@ -68,6 +74,6 @@
             </div>
         </form>
     </div>
-
+    
 </body>
 </html>

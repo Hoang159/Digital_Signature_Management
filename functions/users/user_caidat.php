@@ -21,17 +21,7 @@
         <div class="info-item">
             <span class="info-label">Mật khẩu</span>
             <span class="info-value"> ******** </span>
-            <a href="#" class="change-link">Thay đổi</a>
-        </div>
-        <div class="info-item">
-            <span class="info-label">Số điện thoại</span>
-            <span class="info-value">(Chưa có thông tin) </span>
-            <a href="#" class="change-link">Thay đổi</a>
-        </div>
-        <div class="info-item">
-            <span class="info-label">Email</span>
-            <span class="info-value">(Chưa có thông tin) </span>
-            <a href="#" class="change-link">Thay đổi</a>
+            <a href="#" class="change-link">Xem</a>
         </div>
         
     </div>
@@ -39,23 +29,35 @@
         <h2>Thông tin cá nhân <a href="#" class="change-link">Thay đổi</a></h2>
         <div class="info-item">
             <span class="info-label">Họ và Tên</span>
-            <span class="info-value">Tên</span>
+            <span class="info-value">(Chưa có thông tin)</span>
             <span class="change-link-placeholder"></span>
         </div>
         <div class="info-item">
             <span class="info-label">Giới tính</span>
-            <span class="info-value">Nam</span>
+            <span class="info-value">(Chưa có thông tin)</span>
             <span class="change-link-placeholder"></span>
         </div>
         <div class="info-item">
             <span class="info-label">Ngày sinh</span>
-            <span class="info-value">x/x/2003</span>
+            <span class="info-value">(Chưa có thông tin)</span>
             <span class="change-link-placeholder"></span>
         </div>
         <div class="info-item">
             <span class="info-label">Địa chỉ</span>
-            <span class="info-value">ĐHBK</span>
+            <span class="info-value">(Chưa có thông tin)</span>
             <span class="change-link-placeholder"></span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Email</span>
+            <span class="info-value">(Chưa có thông tin) </span>
+            <span class="change-link-placeholder"></span>
+            <!-- <a href="#" class="change-link">Thay đổi</a> -->
+        </div>
+        <div class="info-item">
+            <span class="info-label">Số điện thoại</span>
+            <span class="info-value">(Chưa có thông tin) </span>
+            <span class="change-link-placeholder"></span>
+            <!-- <a href="#" class="change-link">Thay đổi</a> -->
         </div>
     </div>
 
