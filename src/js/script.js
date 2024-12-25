@@ -1,7 +1,6 @@
-// index.html
+// Chỉ chạy mã nếu đang ở file index.html
 // Cuộn đến các phần tương ứng
 if (window.location.pathname.includes('index.html')) {
-// Chỉ chạy mã nếu đang ở file index.html
     document.getElementById('GioiThieu').addEventListener('click', function() {
         document.getElementById('GioiThieuContent').scrollIntoView({ behavior: 'smooth' });
     });
@@ -22,16 +21,6 @@ if (window.location.pathname.includes('index.html')) {
         document.getElementById('LienHeContent').scrollIntoView({ behavior: 'smooth' });
     });
 }
-
-// home.html và admin_home.html
-//hàm chuyển hướng người dùng đến trang "section" khác
-// function showSection(section) {
-//     var sections = document.getElementsByClassName('content-section');
-//     for (var i = 0; i < sections.length; i++) {
-//         sections[i].classList.remove('active');
-//     }
-//     document.getElementById(section).classList.add('active');
-// }
 
 function showSection(sectionId) {
     // Ẩn tất cả các section
@@ -57,12 +46,12 @@ function showSection(sectionId) {
         };
 
         if (phpFiles[sectionId]) {
-            loadPHPContent(section, phpFiles[sectionId]);
+            loadPHPContent(section, phpFiles[sectionId], sectionId);
         }
     }
 }
 
-function loadPHPContent(section, url) {
+function loadPHPContent(section, url, sectionId) {
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -72,10 +61,65 @@ function loadPHPContent(section, url) {
         })
         .then(data => {
             section.innerHTML = data; // Chèn nội dung vào section
+            // Gắn sự kiện chỉ cho đúng section
+            if (sectionId === "caidat") {
+                attachModalEvents(section); 
+                attachModal2Events(section); 
+            }
         })
         .catch(error => {
             console.error('Error fetching PHP file:', error);
             section.innerHTML = '<p>Không thể tải nội dung. Vui lòng thử lại sau.</p>';
         });
 }
+
+// Tải và xử lý modal
+function attachModalEvents() {
+    const modal = document.querySelector('.sb4-caidat .modal');
+    const openModalButton = document.querySelector('#openModal');
+    const closeModalButton = document.querySelector('.sb4-caidat .close');
+
+    if (openModalButton && modal && closeModalButton) {
+        openModalButton.addEventListener('click', event => {
+            event.preventDefault();
+            modal.style.display = 'block';
+        });
+
+        closeModalButton.addEventListener('click', () => modal.style.display = 'none');
+
+        window.addEventListener('click', event => {
+            if (event.target === modal) modal.style.display = 'none';
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    attachModal2Events(); // Gắn sự kiện modal khi DOM đã sẵn sàng
+});
+
+// Tải và xử lý modal2
+function attachModal2Events() {
+    const modal2 = document.querySelector('.sb4-caidat .modal2');
+    const openModal2Button = document.querySelector('#openModal2');
+    const closeModal2Button = document.querySelector('.sb4-caidat .close2');
+
+    if (openModal2Button && modal2 && closeModal2Button) {
+        openModal2Button.addEventListener('click', event => {
+            event.preventDefault();
+            modal2.style.display = 'block';
+        });
+
+        closeModal2Button.addEventListener('click', () => modal2.style.display = 'none');
+
+        window.addEventListener('click', event => {
+            if (event.target === modal2) modal2.style.display = 'none';
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    attachModal2Events(); // Gắn sự kiện modal khi DOM đã sẵn sàng
+});
+
+
 

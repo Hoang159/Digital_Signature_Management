@@ -389,21 +389,21 @@ body {
     margin: 20px 50px;
     flex-direction: column;
 }
-.sb4-caidat h2 {
+.sb4-caidat .info-section {
+    margin-bottom: 20px;
+    width: 100%;
+}
+.sb4-caidat .info-section h2 {
     font-size: 18px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     text-align: left;
 }
-.sb4-caidat h2 .change-link {
+.sb4-caidat .info-section h2 .change-link {
     flex: 1;
     text-align: right;
     font-weight: normal;
-}
-.sb4-caidat .info-section {
-    margin-bottom: 20px;
-    width: 100%;
 }
 .sb4-caidat .info-item {
     display: flex;
@@ -435,4 +435,134 @@ body {
 }
 .sb4-caidat .change-link-placeholder {
     visibility: hidden;
+}
+
+/* Nội dung hộp thoại thay đổi mật khẩu*/
+.sb4-caidat .modal {
+    display: none; /* Ẩn ban đầu */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow: auto; */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.sb4-caidat .modal-content {
+    background-color: #fff;
+    margin: 120px auto; /* Căn giữa theo chiều dọc */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.sb4-caidat .modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.sb4-caidat .modal-content .close:hover,
+.sb4-caidat .modal-content .close:focus {
+    color: #000;
+    text-decoration: none;
+}
+.sb4-caidat .modal-content h2 {
+    padding: 0px 25%;
+}
+.sb4-caidat .modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sb4-caidat .modal-content form label {
+    font-weight: bold;
+}
+.sb4-caidat .modal-content form input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.sb4-caidat .modal-content form button {
+    background-color: rgb(43, 43, 251);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sb4-caidat .modal-content form button:hover {
+    background-color: blue;
+}
+
+/* Nội dung hộp thoại thay đổi thông tin cá nhân */
+.sb4-caidat .modal2 {
+    display: none; /* Ẩn ban đầu */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow: auto; */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.sb4-caidat .modal2-content {
+    background-color: #fff;
+    margin: 80px auto; /* Căn giữa theo chiều dọc */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.sb4-caidat .modal2-content .close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.sb4-caidat .modal2-content .close2:hover,
+.sb4-caidat .modal2-content .close2:focus {
+    color: #000;
+    text-decoration: none;
+}
+.sb4-caidat .modal2-content h2 {
+    padding: 0px 20%;
+}
+.sb4-caidat .modal2-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sb4-caidat .modal2-content form label {
+    font-weight: bold;
+}
+.sb4-caidat .modal2-content form input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.sb4-caidat .modal2-content form button {
+    background-color: rgb(43, 43, 251);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sb4-caidat .modal2-content form button:hover {
+    background-color: blue;
 }
