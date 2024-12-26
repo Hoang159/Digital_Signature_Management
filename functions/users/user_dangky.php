@@ -23,9 +23,17 @@
     </div>
     <div class="right-dangky">
         <form>
-            <div class="form-group">
-                <label for="name">Họ và tên bạn *</label>
+            <div class="form-group-special">
+                <label for="account">Tên tài khoản</label>
+                <input type="text" id="account" name="account" placeholder="Tên tài khoản" required>
+            </div>
+            <div class="form-group half">
+                <label for="name">Họ và tên bạn</label>
                 <input type="text" id="name" name="name" placeholder="Tên của bạn" required>
+            </div>
+            <div class="form-group half">
+                <label for="address">Địa chỉ</label>
+                <input type="text" id="address" name="address" placeholder="Địa chỉ của bạn" required>
             </div>
             <!-- <div class="form-group">
                 <label for="product">Sản phẩm bạn quan tâm *</label>
@@ -34,11 +42,11 @@
                 </select>
             </div> -->
             <div class="form-group half">
-                <label for="email">Email của bạn *</label>
+                <label for="email">Email của bạn</label>
                 <input type="email" id="email" name="email" placeholder="Email của bạn" required>
             </div>
             <div class="form-group half">
-                <label for="phone">Số điện thoại *</label>
+                <label for="phone">Số điện thoại</label>
                 <input type="tel" id="phone" name="phone" placeholder="Số điện thoại của bạn" required>
             </div>
             <!-- <div class="form-group half">
@@ -51,7 +59,7 @@
                 <label for="company">Tên công ty *</label>
                 <input type="text" id="company" name="company" placeholder="Tên công ty của bạn" required>
             </div> -->
-            <div class="form-group half">
+            <!-- <div class="form-group half">
                 <label for="hometown">Quê quán *</label>
                 <select id="hometown" name="hometown" required>
                     <option value="">-- Tỉnh/Thành phố --</option>
@@ -68,7 +76,8 @@
                     <option value="Khu vực miền Trung">Khu vực miền Trung</option>
                     <option value="Khu vực miền Nam">Khu vực miền Nam</option>
                 </select>
-            </div>
+            </div> -->
+            
             <div class="form-group">
                 <button type="submit">Đăng ký bộ khóa ngay</button>
             </div>

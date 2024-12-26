@@ -246,13 +246,17 @@ body {
     text-decoration: none;
 }
 .sb1-dangky .right-dangky {
-    padding: 40px 40px 10px 40px;
+    padding: 40px 40px 10px 60px;
     flex: 1;
     min-width: 300px;
 }
 .sb1-dangky .right-dangky form {
     display: flex;
     flex-wrap: wrap;
+}
+.sb1-dangky .right-dangky form .form-group-special {
+    width: 94%;
+    margin-bottom: 20px;
 }
 .sb1-dangky .right-dangky form .form-group {
     width: 100%;
@@ -279,7 +283,7 @@ body {
     border-radius: 4px;
 }
 .sb1-dangky .right-dangky form button {
-    width: 100%;
+    width: 94%;
     padding: 15px;
     background-color: #007bff;
     color: white;
