@@ -22,6 +22,37 @@ if (window.location.pathname.includes('index.html')) {
     });
 }
 
+// Hiển thị chào username lấy từ database vào file html
+document.addEventListener('DOMContentLoaded', function() {
+    // Kiểm tra nếu đây là trang home.html
+    if (window.location.pathname.includes("home.html") || window.location.pathname.includes("admin_home.html")) {
+        // Gọi AJAX đến signin.php để lấy thông tin người dùng
+        fetch('../../database/signin.php?ajax=true')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Lấy username từ response
+                    const username = data.username;
+                    const username2 = username.charAt(0).toUpperCase() + username.slice(1);
+
+                    // Thay thế tất cả các vị trí chứa "Tên tài khoản" bằng username
+                    document.querySelectorAll('.header .dangxuat button').forEach(element => {
+                        element.innerHTML = `Chào ${username} <span class="dropdown-arrow"></span>`;
+                    });
+
+                    document.querySelector('.sidebar .information h2').textContent = username2;
+
+                } else {
+                    alert(data.message); // Hiển thị lỗi nếu có
+                    window.location.href = '../../index.html'; // Chuyển hướng nếu chưa đăng nhập
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user info:', error);
+            });
+    }
+});
+
 function showSection(sectionId) {
     // Ẩn tất cả các section
     document.querySelectorAll('.content-section').forEach(section => {
@@ -120,6 +151,7 @@ function attachModal2Events() {
 document.addEventListener('DOMContentLoaded', function() {
     attachModal2Events(); // Gắn sự kiện modal khi DOM đã sẵn sàng
 });
+
 
 
 

@@ -43,6 +43,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = "Tên đăng nhập hoặc mật khẩu sai!";
     }
 }
+elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['ajax']) && $_GET['ajax'] == 'true') {
+    // Trả về dữ liệu người dùng qua AJAX
+    if (isset($_SESSION['username'])) {
+        echo json_encode([
+            'status' => 'success',
+            // 'full_name' => $_SESSION['full_name'],
+            'username' => $_SESSION['username']
+        ]);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Người dùng chưa đăng nhập']);
+    }
+    exit;
+}
 
 include('../src/components/signin.html'); 
 ?>

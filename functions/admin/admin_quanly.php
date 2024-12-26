@@ -10,8 +10,59 @@
 
 <body>
 
-    <div>
-        <h1> Quản lý chữ ký số </h1>
+<div class="table-management">
+        <h3> Các chữ ký đã duyệt</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Số thứ tự </th>
+                    <th> Chủ sở hữu </th>
+                    <th> Họ và tên </th>
+                    <th> Số điện thoại </th>
+                    <th> Public Key </th>
+                    <th class="button-cell"> Xóa </th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <!-- <td class="no-data" colspan="4"> Chưa có dữ liệu </td> -->
+                    <td> 1 </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td><a href="#"> Xem </a></td>
+                    <td class="button-cell"> 
+                        <button><i class="fa-solid fa-trash"></i></button> 
+                    </td>
+                </tr>
+
+                <tr>
+                    <!-- <td class="no-data" colspan="4"> Chưa có dữ liệu </td> -->
+                    <td> 2 </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td><a href="#"> Xem </a></td>
+                    <td class="button-cell"> 
+                        <button><i class="fa-solid fa-trash"></i></button> 
+                    </td>
+                </tr>
+
+                <tr>
+                    <!-- <td class="no-data" colspan="4"> Chưa có dữ liệu </td> -->
+                    <td> 3 </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td><a href="#"> Xem </a></td>
+                    <td class="button-cell"> 
+                        <button><i class="fa-solid fa-trash"></i></button> 
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
 
 </body>
