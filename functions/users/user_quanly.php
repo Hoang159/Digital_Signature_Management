@@ -25,14 +25,14 @@
             <tr>
                 <td>1</td>
                 <td>Public Key</td>
-                <td><a href="#">View</a></td>
+                <td><a href="#">Xem</a></td>
                 <td>Tên người dùng</td>
                 <td><a href="#">Download</a></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Private Key</td>
-                <td><a href="#">View</a></td>
+                <td><a href="#">Xem</a></td>
                 <td>Tên người dùng</td>
                 <td><a href="#">Download</a></td>
             </tr>
