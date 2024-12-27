@@ -1,50 +1,183 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <link rel="icon" href="assets/images/logo1.png" type="image/png">
-    <title> Đăng ký </title>
-    <link rel="stylesheet" href="assets/fonts/googleapis.css">
-    <link rel="stylesheet" href="../src/css/signup.css">
-</head>
+  <head>
+    <link rel="icon" href="assets/images/logo1.png" type="image/png" />
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="assets/fonts/googleapis.css" />
+    <link rel="stylesheet" href="../src/css/signup.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="left">
-            <div class="left-logo">
-                <img alt="Logo" height="100" src="../assets/images/logo2.png" width="100"/>
-            </div>
-            <h2 style="text-align: center;"> Đăng ký tài khoản HMPSign </h2>
-            <!-- Hiển thị thông báo lỗi nếu có -->
-              <?php if (!empty($error_message)): ?>
-              <p style="color: red;"><?php echo $error_message; ?></p>
-              <?php endif; ?>
-
-            <!-- Hiển thị thông báo thành công nếu có -->
-             <?php if (!empty($success_message)): ?>
-             <p style="color: green;"><?php echo $success_message; ?></p>
-             <?php endif; ?>
-            <!-- Form đăng ký -->
-            <form action="signup.php" method="POST">
-                <div class="form-group">
-                    <label for="username"> Tài khoản </label>
-                    <input id="username" name="username" placeholder="Tên đăng nhập" type="text" required/>
-                </div>
-                <div class="form-group">
-                    <label for="password"> Mật khẩu </label>
-                    <input id="password" name="password" placeholder="Mật khẩu" type="password" required/>
-                </div>
-                <div class="form-group">
-                    <label for="confirm_password"> Xác nhận mật khẩu </label>
-                    <input id="confirm_password" name="confirm_password" placeholder="Nhập lại mật khẩu" type="password" required/>
-                </div>
-
-                <div class="button-container">
-                    <button class="btn btn-dangky" type="submit">Đăng ký</button>
-                </div>
-            </form>
-
-            <p style="text-align: center;">Đã có tài khoản? <a href="signin.php">Đăng nhập</a></p>
+      <div class="left">
+        <div class="left-logo">
+          <img
+            alt="Logo"
+            height="100"
+            src="../assets/images/logo2.png"
+            width="100"
+          />
         </div>
+        <h2 style="text-align: center">Đăng ký tài khoản HMPSign</h2>
+        <!-- Hiển thị thông báo lỗi nếu có -->
+        <?php if (!empty($error_message)): ?>
+        <p style="color: red"><?php echo $error_message; ?></p>
+        <?php endif; ?>
+
+        <!-- Hiển thị thông báo thành công nếu có -->
+        <?php if (!empty($success_message)): ?>
+        <p style="color: green"><?php echo $success_message; ?></p>
+        <?php endif; ?>
+
+        <!-- Form đăng ký -->
+        <form action="signup.php" method="POST">
+          <div class="form-group">
+            <label for="username"> Tài khoản </label>
+            <input
+              id="username"
+              name="username"
+              placeholder="Tên đăng nhập"
+              type="text"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password"> Mật khẩu </label>
+            <input
+              id="password"
+              name="password"
+              placeholder="Mật khẩu"
+              type="password"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="confirm_password"> Xác nhận mật khẩu </label>
+            <input
+              id="confirm_password"
+              name="confirm_password"
+              placeholder="Nhập lại mật khẩu"
+              type="password"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="full_name"> Họ và tên </label>
+            <input
+              id="full_name"
+              name="full_name"
+              placeholder="Nhập họ và tên của bạn"
+              type="text"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              placeholder="Nhập email của bạn"
+              type="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phonenumber">Số điện thoại</label>
+            <input
+              id="phonenumber"
+              name="phonenumber"
+              placeholder="Nhập số điện thoại của bạn"
+              type="tel"
+              pattern="^0\d{9}$"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address">Địa chỉ</label>
+            <select id="address" name="address" required>
+              <option value="">Chọn tỉnh thành</option>
+              <option value="HaNoi">Hà Nội</option>
+              <option value="HoChiMinh">Hồ Chí Minh</option>
+              <option value="DaNang">Đà Nẵng</option>
+              <option value="HaiPhong">Hải Phòng</option>
+              <option value="CanTho">Cần Thơ</option>
+              <option value="AnGiang">An Giang</option>
+              <option value="BacGiang">Bắc Giang</option>
+              <option value="BacKan">Bắc Kạn</option>
+              <option value="BacLieu">Bạc Liêu</option>
+              <option value="BinhDinh">Bình Định</option>
+              <option value="BinhDuong">Bình Dương</option>
+              <option value="BinhPhuoc">Bình Phước</option>
+              <option value="CaMau">Cà Mau</option>
+              <option value="CaoBang">Cao Bằng</option>
+              <option value="DaNang">Đà Nẵng</option>
+              <option value="DacLak">Đắk Lắk</option>
+              <option value="DacNong">Đắk Nông</option>
+              <option value="DienBien">Điện Biên</option>
+              <option value="DongNai">Đồng Nai</option>
+              <option value="DongThap">Đồng Tháp</option>
+              <option value="GiaLai">Gia Lai</option>
+              <option value="HaGiang">Hà Giang</option>
+              <option value="HaNam">Hà Nam</option>
+              <option value="HaiDuong">Hải Dương</option>
+              <option value="HauGiang">Hậu Giang</option>
+              <option value="HoaBinh">Hòa Bình</option>
+              <option value="HungYen">Hưng Yên</option>
+              <option value="KhanhHoa">Khánh Hòa</option>
+              <option value="KienGiang">Kiên Giang</option>
+              <option value="KonTum">Kon Tum</option>
+              <option value="LaiChau">Lai Châu</option>
+              <option value="LamDong">Lâm Đồng</option>
+              <option value="LangSon">Lạng Sơn</option>
+              <option value="LaoCai">Lào Cai</option>
+              <option value="LongAn">Long An</option>
+              <option value="NamDinh">Nam Định</option>
+              <option value="NgheAn">Nghệ An</option>
+              <option value="NinhBinh">Ninh Bình</option>
+              <option value="NinhThuan">Ninh Thuận</option>
+              <option value="PhuTho">Phú Thọ</option>
+              <option value="PhuYen">Phú Yên</option>
+              <option value="QuangBinh">Quảng Bình</option>
+              <option value="QuangNam">Quảng Nam</option>
+              <option value="QuangNgai">Quảng Ngãi</option>
+              <option value="QuangNinh">Quảng Ninh</option>
+              <option value="QuangTri">Quảng Trị</option>
+              <option value="SocTrang">Sóc Trăng</option>
+              <option value="SonLa">Sơn La</option>
+              <option value="TayNinh">Tây Ninh</option>
+              <option value="ThanhHoa">Thanh Hóa</option>
+              <option value="ThuaThienHue">Thừa Thiên Huế</option>
+              <option value="TienGiang">Tiền Giang</option>
+              <option value="VinhPhuc">Vĩnh Phúc</option>
+              <option value="VinhLong">Vĩnh Long</option>
+              <option value="YenBai">Yên Bái</option>
+              <option value="BinhThuan">Bình Thuận</option>
+              <option value="KienGiang">Kiên Giang</option>
+              <option value="QuangNam">Quảng Nam</option>
+              <option value="TuyenQuang">Tuyên Quang</option>
+              <option value="BacNinh">Bắc Ninh</option>
+              <option value="BinhPhuoc">Bình Phước</option>
+              <option value="LaiChau">Lai Châu</option>
+              <option value="LangSon">Lạng Sơn</option>
+              <option value="QuangNgai">Quảng Ngãi</option>
+            </select>
+          </div>
+
+          <div class="button-container">
+            <button class="btn btn-dangky" type="submit">Đăng ký</button>
+          </div>
+        </form>
+
+        <p style="text-align: center">
+          Đã có tài khoản? <a href="signin.php">Đăng nhập</a>
+        </p>
+      </div>
     </div>
-</body>
+  </body>
 </html>

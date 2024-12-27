@@ -25,6 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = 'user'; 
+        $_SESSION['full_name'] = $user['full_name'];
+        $_SESSION['address'] = $user['address'];
+        $_SESSION['email'] = $user['email']; 
+        $_SESSION['phonenumber'] = $user['phonenumber'];
+        $_SESSION['password'] = $user['password']; 
 
         // Chuyển hướng đến trang home cho user
         header("Location: ../src/components/home.html");
@@ -48,8 +53,12 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['ajax']) && $_GET['aj
     if (isset($_SESSION['username'])) {
         echo json_encode([
             'status' => 'success',
-            // 'full_name' => $_SESSION['full_name'],
-            'username' => $_SESSION['username']
+            'username' => $_SESSION['username'],
+            'full_name' => $_SESSION['full_name'],
+             'address' => $_SESSION['address'],
+             'email' => $_SESSION['email'],
+            'phonenumber' => $_SESSION['phonenumber'],
+            'password' => $_SESSION['password']
         ]);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Người dùng chưa đăng nhập']);
