@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <link rel="icon" href="assets/images/logo1.png" type="image/png">
-    <title> Đăng nhập </title>
-    <link rel="stylesheet" href="assets/fonts/googleapis.css">
-    <link rel="stylesheet" href="../src/css/signin.css">
-</head>
+  <head>
+    <link rel="icon" href="assets/images/logo1.png" type="image/png" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="assets/fonts/googleapis.css" />
+    <link rel="stylesheet" href="../src/css/signin.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="left">
-            <div class="left-logo">
-                <img alt="Logo" height="100" src="../assets/images/logo2.png" width="100"/>
-            </div>
-            <h2 style="text-align: center;"> Đăng nhập HMPSign</h2>
+      <div class="left">
+        <div class="left-logo">
+          <img
+            alt="Logo"
+            height="100"
+            src="../assets/images/logo2.png"
+            width="100"
+          />
+        </div>
+        <h2 style="text-align: center">Đăng nhập HMPSign</h2>
 
-            <!-- //Hiển thị thông báo lỗi nếu có -->
-            <?php if (!empty($error_message)): ?>
-            <p style="color: red;"><?php echo $error_message; ?></p>
-            <?php endif; ?>
-            
-            <!-- Form đăng nhập gửi dữ liệu về login.php -->
-            <form action="signin.php" method="POST">
-                <div class="form-group">
-                    <label for="username"> Tài khoản </label>
-                    <input id="username" name="username" placeholder="Tài khoản của bạn" type="text" required/>
-                </div>
-                <div class="form-group">
-                    <label for="password"> Mật khẩu </label>
-                    <input id="password" name="password" placeholder="Mật khẩu của bạn" type="password" required/>
-                    
-                </div>
-                <div class="button-container">
-                    <button class="btn btn-dangnhap" type="submit">Đăng nhập</button>
-                    <button class="btn btn-dangky" type="button" onclick="location.href='../database/signup.php'">Đăng ký</button>
-                </div>
-            </form>
-        
-            <!-- <div class="sso">
+        <!-- //Hiển thị thông báo lỗi nếu có -->
+        <?php if (!empty($error_message)): ?>
+        <p style="color: red"><?php echo $error_message; ?></p>
+        <?php endif; ?>
+
+        <!-- Form đăng nhập gửi dữ liệu về login.php -->
+        <form action="signin.php" method="POST">
+          <div class="form-group">
+            <label for="username"> Tài khoản </label>
+            <input
+              id="username"
+              name="username"
+              placeholder="Tài khoản của bạn"
+              type="text"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password"> Mật khẩu </label>
+            <input
+              id="password"
+              name="password"
+              placeholder="Mật khẩu của bạn"
+              type="password"
+              required
+            />
+          </div>
+          <div class="forgot-password">
+            <a href="forgot_password.php">Quên mật khẩu?</a>
+          </div>
+
+          <div class="button-container">
+            <button class="btn btn-dangnhap" type="submit">Đăng nhập</button>
+            <button
+              class="btn btn-dangky"
+              type="button"
+              onclick="location.href='../database/signup.php'"
+            >
+              Đăng ký
+            </button>
+          </div>
+        </form>
+
+        <!-- <div class="sso">
                 <p> Hoặc </p>
                 <div class="sso-buttons">
                     <button>
@@ -54,8 +80,7 @@
                     </button>
                 </div>
             </div> -->
-        </div>
+      </div>
     </div>
-
-</body>
+  </body>
 </html>
