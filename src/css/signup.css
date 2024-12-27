@@ -3,21 +3,21 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  /* align-items: center; */
+  height: 120vh;
   background: #1a73e8;
 }
 
 .container {
   display: flex;
-  width: 1000px;
-  height: 1000px;
+  width: 600px;
+  height: 900px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .left {
   flex: 1;
-  padding: 40px;
+  padding: 40px 40px 40px 50px;
   background: #fff;
 }
 
@@ -43,8 +43,8 @@ h2 {
 }
 
 .form-group input {
-  width: 100%;
-  padding: 10px;
+  width: 95%;
+  padding: 10px 0px 10px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -61,7 +61,7 @@ h2 {
 }
 /* chọn tỉnh */
 .form-group select {
-  width: 100%;
+  width: 97%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -90,7 +90,7 @@ h2 {
 
 .button-container {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   gap: 10px;
 }
 
@@ -106,7 +106,8 @@ h2 {
 }
 
 .btn-dangky {
-  flex: 0 0 100%;
+  /* flex: 0 0 100%; */
+  width: 97%;
 }
 
 .btn:hover {
