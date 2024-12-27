@@ -50,18 +50,16 @@ INSERT INTO `admins` (`id`, `username`, `password`, `role`, `created_at`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `full_name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phonenumber` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
   `role` enum('user') DEFAULT 'user',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Đang đổ dữ liệu cho bảng `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
-(1, '123', '$2y$10$JDwKyIqSA.0p7yDTW/lxYO9r85L/b0erIVapd2Wm.5ZmkP0Dhux7m', 'user', '2024-12-17 01:49:04');
 
 --
 -- Chỉ mục cho các bảng đã đổ

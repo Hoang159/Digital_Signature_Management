@@ -1,100 +1,128 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #1a73e8;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #1a73e8;
 }
 
 .container {
-    display: flex;
-    width: 600px;
-    height: 660px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  width: 1000px;
+  height: 1000px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .left {
-    flex: 1;
-    padding: 40px;
-    background: #fff;
+  flex: 1;
+  padding: 40px;
+  background: #fff;
 }
 
 .left .left-logo {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .form-group a {
-    float: right;
-    text-decoration: none;
-    color: #1a73e8;
-    padding-top: 10px;
+  float: right;
+  text-decoration: none;
+  color: #1a73e8;
+  padding-top: 10px;
 }
 
 .form-group a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+/* chọn tỉnh */
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Cải thiện khi hover */
+.form-group select:hover {
+  border-color: #1a73e8;
+}
+
+/* Tùy chỉnh khi focus vào select */
+.form-group select:focus {
+  border-color: #1a73e8;
+  outline: none;
+}
+
+/* Cải thiện hiển thị option trong select */
+.form-group select option {
+  padding: 10px;
+  font-size: 14px;
+  background-color: #fff;
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .btn {
-    text-decoration: none;
-    padding: 13px 40px;
-    background: #1a73e8;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
+  text-decoration: none;
+  padding: 13px 40px;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 .btn-dangky {
-    flex: 0 0 100%;
+  flex: 0 0 100%;
 }
 
 .btn:hover {
-    background: #155ab6;
+  background: #155ab6;
 }
 
 p {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 p a {
-    color: #1a73e8;
-    text-decoration: none;
+  color: #1a73e8;
+  text-decoration: none;
 }
 
 p a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

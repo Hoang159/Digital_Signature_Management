@@ -1,5 +1,13 @@
 
-
+<?php
+session_start();
+// Lấy thông tin người dùng từ session
+$username = $_SESSION['username'];
+$full_name = $_SESSION['full_name'];
+$address = $_SESSION['address'];
+$email = $_SESSION['email'];
+$phonenumber = $_SESSION['phonenumber'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,15 +33,15 @@
         <form>
             <div class="form-group-special">
                 <label for="account">Tên tài khoản</label>
-                <input type="text" id="account" name="account" placeholder="Tên tài khoản" required>
+                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" required readonly>
             </div>
             <div class="form-group half">
-                <label for="name">Họ và tên bạn</label>
-                <input type="text" id="name" name="name" placeholder="Tên của bạn" required>
+                <label for="full_name">Họ và tên bạn</label>
+                <input type="text" id="full_name" name="full_name" value="<?php echo htmlspecialchars($full_name); ?>" required readonly>
             </div>
             <div class="form-group half">
                 <label for="address">Địa chỉ</label>
-                <input type="text" id="address" name="address" placeholder="Địa chỉ của bạn" required>
+                <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($address); ?>" required readonly>
             </div>
             <!-- <div class="form-group">
                 <label for="product">Sản phẩm bạn quan tâm *</label>
@@ -43,11 +51,11 @@
             </div> -->
             <div class="form-group half">
                 <label for="email">Email của bạn</label>
-                <input type="email" id="email" name="email" placeholder="Email của bạn" required>
+                <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required readonly>
             </div>
             <div class="form-group half">
-                <label for="phone">Số điện thoại</label>
-                <input type="tel" id="phone" name="phone" placeholder="Số điện thoại của bạn" required>
+                <label for="phonenumber">Số điện thoại</label>
+                <input type="text" id="phonenumber" name="phonenumber" value="<?php echo htmlspecialchars($phonenumber); ?>" required readonly>
             </div>
             <!-- <div class="form-group half">
                 <label for="position">Vị trí công việc *</label>
