@@ -24,7 +24,7 @@ if (window.location.pathname.includes('index.html')) {
 
 // Hiển thị chào username lấy từ database vào file html
 document.addEventListener('DOMContentLoaded', function() {
-    // Kiểm tra nếu đây là trang home.html
+    // Kiểm tra nếu đây là trang home.html/ admin_home.html
     if (window.location.pathname.includes("home.html") || window.location.pathname.includes("admin_home.html")) {
         // Gọi AJAX đến signin.php để lấy thông tin người dùng
         fetch('../../database/signin.php?ajax=true')
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Hàm chuyển giữa các section ở sidebar
 function showSection(sectionId) {
     // Ẩn tất cả các section
     document.querySelectorAll('.content-section').forEach(section => {
@@ -82,6 +83,7 @@ function showSection(sectionId) {
     }
 }
 
+// Hàm chèn nội dung php vào section sidebar
 function loadPHPContent(section, url, sectionId) {
     fetch(url)
         .then(response => {
@@ -97,6 +99,9 @@ function loadPHPContent(section, url, sectionId) {
                 attachModalEvents(section); 
                 attachModal2Events(section); 
             }
+            if (sectionId === "admin_quanly") {
+                attachdynamicModalEvents(section); 
+            }
         })
         .catch(error => {
             console.error('Error fetching PHP file:', error);
@@ -104,7 +109,7 @@ function loadPHPContent(section, url, sectionId) {
         });
 }
 
-// Tải và xử lý modal
+// Tải và xử lý modal đổi mật khẩu
 function attachModalEvents() {
     const modal = document.querySelector('.sb4-caidat .modal');
     const openModalButton = document.querySelector('#openModal');
@@ -124,11 +129,7 @@ function attachModalEvents() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    attachModal2Events(); // Gắn sự kiện modal khi DOM đã sẵn sàng
-});
-
-// Tải và xử lý modal2
+// Tải và xử lý modal2 thay đổi thông tin cá nhân
 function attachModal2Events() {
     const modal2 = document.querySelector('.sb4-caidat .modal2');
     const openModal2Button = document.querySelector('#openModal2');
@@ -148,10 +149,59 @@ function attachModal2Events() {
     }
 }
 
+// Modal động dành cho quản lý ở admin
+function attachdynamicModalEvents() {
+    // Lấy tất cả các liên kết "Xem" trong bảng
+    const xemLinks = document.querySelectorAll(".table tbody tr td .xemlink");
+
+    // Lấy dmodal
+    const dmodal = document.getElementById("dynamicModal");
+    const dmodalContent = document.getElementById("dmodalContent");
+    const dcloseModal = document.querySelector(".dmodal .dclose");
+
+    // Thêm sự kiện click cho từng nút "Xem"
+    xemLinks.forEach((link, index) => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // // Lấy dữ liệu từ hàng tương ứng
+            const row = this.closest("tr");
+            const soThuTu = row.cells[0].innerText;
+            const chuSoHuu = row.cells[1].innerText;
+            const hoVaTen = row.cells[2].innerText;
+            const soDienThoai = row.cells[3].innerText;
+            const publicKey = row.cells[4].innerText;
+
+            // Gán nội dung vào dmodal
+            dmodalContent.innerHTML = `
+                <p><strong>Số thứ tự:</strong> ${soThuTu}</p>
+                <p><strong>Chủ sở hữu:</strong> ${chuSoHuu}</p>
+                <p><strong>Họ và tên:</strong> ${hoVaTen}</p>
+                <p><strong>Số điện thoại:</strong> ${soDienThoai}</p>
+                <p><strong>Public Key:</strong> ${publicKey}</p>
+            `;
+
+            // Hiển thị dmodal
+            dmodal.style.display = "block";
+        });
+    });
+
+    // Đóng dmodal
+    dcloseModal.addEventListener("click", function () {
+        dmodal.style.display = "none";
+    });
+
+    // Đóng dmodal khi click ra ngoài
+    window.addEventListener("click", function (event) {
+        if (event.target === dmodal) {
+            dmodal.style.display = "none";
+        }
+    });
+}
+
+// Gắn sự kiện modal khi DOM đã sẵn sàng
 document.addEventListener('DOMContentLoaded', function() {
-    attachModal2Events(); // Gắn sự kiện modal khi DOM đã sẵn sàng
+    attachModalEvents();
+    attachModal2Events();
+    attachdynamicModalEvents();
 });
-
-
-
-

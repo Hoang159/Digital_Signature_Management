@@ -10,7 +10,7 @@
 
 <body>
 
-<div class="table-management">
+    <div class="table-management">
         <h3> Các chữ ký đã duyệt</h3>
         <table class="table">
             <thead>
@@ -31,7 +31,7 @@
                     <td> ... </td>
                     <td> ... </td>
                     <td> ... </td>
-                    <td><a href="#"> Xem </a></td>
+                    <td><a href="#" class="xemlink"> Xem </a></td>
                     <td class="button-cell"> 
                         <button><i class="fa-solid fa-trash"></i></button> 
                     </td>
@@ -43,7 +43,7 @@
                     <td> ... </td>
                     <td> ... </td>
                     <td> ... </td>
-                    <td><a href="#"> Xem </a></td>
+                    <td><a href="#" class="xemlink"> Xem </a></td>
                     <td class="button-cell"> 
                         <button><i class="fa-solid fa-trash"></i></button> 
                     </td>
@@ -55,7 +55,7 @@
                     <td> ... </td>
                     <td> ... </td>
                     <td> ... </td>
-                    <td><a href="#"> Xem </a></td>
+                    <td><a href="#" class="xemlink"> Xem </a></td>
                     <td class="button-cell"> 
                         <button><i class="fa-solid fa-trash"></i></button> 
                     </td>
@@ -64,6 +64,17 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Hộp thoại khi nhấn vào Xem, d nghĩa là dynamic - nội dung động -->
+    <div id="dynamicModal" class="dmodal"> 
+        <div class="dmodal-content">
+            <span class="dclose"><i class="fa-solid fa-xmark"></i></span>
+            <h3>Thông tin chi tiết</h3>
+            <p id="dmodalContent">Nội dung</p>
+        </div>
+    </div>
+
+    <script src="../../src/js/script.js"></script>
 
 </body>
 </html>
