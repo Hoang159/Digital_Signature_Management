@@ -22,25 +22,27 @@ if (window.location.pathname.includes('index.html')) {
     });
 }
 
-// Hiển thị chào username lấy từ database vào file html
+// Hiển thị chào full_name lấy từ database vào file html
 document.addEventListener('DOMContentLoaded', function() {
     // Kiểm tra nếu đây là trang home.html/ admin_home.html
-    if (window.location.pathname.includes("home.html") || window.location.pathname.includes("admin_home.html")) {
+    if (window.location.pathname.includes("home.html")) {
         // Gọi AJAX đến signin.php để lấy thông tin người dùng
         fetch('../../database/signin.php?ajax=true')
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    // Lấy username từ response
+                    // Lấy full_name từ response
+                    const full_name = data.full_name;
+                    const full_name2 = full_name.charAt(0).toUpperCase() + full_name.slice(1);
                     const username = data.username;
-                    const username2 = username.charAt(0).toUpperCase() + username.slice(1);
 
-                    // Thay thế tất cả các vị trí chứa "Tên tài khoản" bằng username
-                    document.querySelectorAll('.header .dangxuat button').forEach(element => {
-                        element.innerHTML = `Chào ${username} <span class="dropdown-arrow"></span>`;
+                    // Thay thế tất cả các vị trí chứa "Tên tài khoản" bằng full_name
+                    document.querySelectorAll('.header .dangxuat .tennguoidung').forEach(element => {
+                        element.innerHTML = `Chào ${full_name} <span class="dropdown-arrow"></span>`;
                     });
 
-                    document.querySelector('.sidebar .information h2').textContent = username2;
+                    document.querySelector('.sidebar .information .tennguoidung2').textContent = full_name2;
+                    document.querySelector('.sidebar .information .tentaikhoan').textContent = username;
 
                 } else {
                     alert(data.message); // Hiển thị lỗi nếu có
@@ -95,6 +97,9 @@ function loadPHPContent(section, url, sectionId) {
         .then(data => {
             section.innerHTML = data; // Chèn nội dung vào section
             // Gắn sự kiện chỉ cho đúng section
+            if (sectionId === "quanly") {
+                attachdynamicModal2Events(section); 
+            }
             if (sectionId === "caidat") {
                 attachModalEvents(section); 
                 attachModal2Events(section); 
@@ -199,9 +204,57 @@ function attachdynamicModalEvents() {
     });
 }
 
+// Modal động dành cho quản lý ở user
+function attachdynamicModal2Events() {
+    // Lấy tất cả các liên kết "Xem" trong bảng
+    const xemLinks2 = document.querySelectorAll(".sb2-quanly table tbody tr td .xemlink");
+
+    // Lấy dmodal
+    const dmodal2 = document.getElementById("dynamicModal2");
+    const dmodal2Content = document.getElementById("dmodal2Content");
+    const dcloseModal2 = document.querySelector(".dmodal2 .dclose2");
+
+    // Thêm sự kiện click cho từng nút "Xem"
+    xemLinks2.forEach((link, index) => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // // Lấy dữ liệu từ hàng tương ứng
+            const row = this.closest("tr");
+            // const soThuTu = row.cells[0].innerText;
+            const tieude = row.cells[1].innerText;
+            const nguoisohuu = row.cells[3].innerText;
+
+            // Gán nội dung vào dmodal2
+            dmodal2Content.innerHTML = `
+                <p><strong>Người sở hữu:</strong> ${nguoisohuu}</p>
+                <p><strong>Tiêu đề:</strong> ${tieude}</p>
+                <p><strong>Thông tin:</strong> </p>
+                
+            `;
+
+            // Hiển thị dmodal2
+            dmodal2.style.display = "block";
+        });
+    });
+
+    // Đóng dmodal
+    dcloseModal2.addEventListener("click", function () {
+        dmodal2.style.display = "none";
+    });
+
+    // Đóng dmodal khi click ra ngoài
+    window.addEventListener("click", function (event) {
+        if (event.target === dmodal2) {
+            dmodal2.style.display = "none";
+        }
+    });
+}
+
 // Gắn sự kiện modal khi DOM đã sẵn sàng
 document.addEventListener('DOMContentLoaded', function() {
     attachModalEvents();
     attachModal2Events();
     attachdynamicModalEvents();
+    attachdynamicModal2Events();
 });

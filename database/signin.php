@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $admin = $stmt_admin->fetch();
 
     // 3. Xác thực tài khoản
-    if ($user && password_verify($password, $user['password'])) {
+    if ($user && $password== $user['password']) {
         // Lưu thông tin người dùng
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
@@ -55,8 +55,8 @@ elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['ajax']) && $_GET['aj
             'status' => 'success',
             'username' => $_SESSION['username'],
             'full_name' => $_SESSION['full_name'],
-             'address' => $_SESSION['address'],
-             'email' => $_SESSION['email'],
+            'address' => $_SESSION['address'],
+            'email' => $_SESSION['email'],
             'phonenumber' => $_SESSION['phonenumber'],
             'password' => $_SESSION['password']
         ]);

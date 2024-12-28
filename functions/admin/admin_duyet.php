@@ -1,3 +1,14 @@
+<?php
+include '../../database/connect_pdo.php'; 
+
+// Truy vấn dữ liệu từ bảng request
+$sql = "SELECT * FROM request";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -25,24 +36,33 @@
             </thead>
             
             <tbody>
-                <tr>
-                    <!-- <td class="no-data" colspan="4"> Chưa có dữ liệu </td> -->
-                    <td> ... </td>
-                    <td> ... </td>
-                    <td> ... </td>
-                    <td> ... </td>
-                    <!-- <td><a href="#"> Duyệt </a></td>
-                    <td><a href="#"> Hủy </a></td> -->
-                    <td class="button-cell"> 
-                        <button><i class="fa-solid fa-check"></i></button> 
-                    </td>
-                    <td class="button-cell"> 
-                        <button><i class="fa-solid fa-xmark"></i></button> 
-                    </td>
-                </tr>
+                <?php if (!empty($requests)): ?>
+                    <?php foreach ($requests as $request): ?>
+                        <tr>
+                            <!-- <td class="no-data" colspan="4"> Chưa có dữ liệu </td> -->
+                            <td> <?= htmlspecialchars($request['username']) ?> </td>
+                            <td> <?= htmlspecialchars($request['full_name']) ?> </td>
+                            <td> <?= htmlspecialchars($request['email']) ?> </td>
+                            <td> <?= htmlspecialchars($request['phonenumber']) ?> </td>
+                            <!-- <td><a href="#"> Duyệt </a></td>
+                            <td><a href="#"> Hủy </a></td> -->
+                            <td class="button-cell"> 
+                                <button><i class="fa-solid fa-check"></i></button> 
+                            </td>
+                            <td class="button-cell"> 
+                                <button ><i class="fa-solid fa-xmark"></i></button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                        <tr>
+                            <td colspan="6" style="text-align: center;">Chưa có dữ liệu</td>
+                        </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
+    
 
 </body>
 </html>

@@ -4,20 +4,20 @@ body {
   display: flex;
   justify-content: center;
   /* align-items: center; */
-  height: 120vh;
+  height: 105vh;
   background: #1a73e8;
 }
 
 .container {
   display: flex;
   width: 600px;
-  height: 900px;
+  height: 720px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .left {
   flex: 1;
-  padding: 40px 40px 40px 50px;
+  padding: 10px 25px 40px 50px;
   background: #fff;
 }
 
@@ -32,24 +32,56 @@ h2 {
   color: #333;
 }
 
-.form-group {
-  margin-bottom: 20px;
+.left form {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
+.left form label {
+  display: flex;
   font-weight: bold;
 }
 
-.form-group input {
+.left form input {
   width: 95%;
   padding: 10px 0px 10px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.form-group a {
+.left form .form-group-normal {
+  width: 97%;
+  margin-bottom: 20px;
+}
+
+.left form .form-group-half {
+  width: 45%;
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+/* #full_name, #username{
+  width: 95%;
+  padding: 10px 0px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+} */
+
+/* #password, #confirm_password, #email, #phonenumber{
+  width: 40%;
+  padding: 10px 0px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+} */
+/* #password, #confirm_password {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} */
+
+/* .form-group a {
   float: right;
   text-decoration: none;
   color: #1a73e8;
@@ -58,7 +90,8 @@ h2 {
 
 .form-group a:hover {
   text-decoration: underline;
-}
+} */
+
 /* chọn tỉnh */
 .form-group select {
   width: 97%;
@@ -88,13 +121,18 @@ h2 {
   background-color: #fff;
 }
 
-.button-container {
+.form-group .half {
+  width: 40%;
+}
+
+.left form .button-container {
+  width: 97%;
   display: flex;
   justify-content: left;
   gap: 10px;
 }
 
-.btn {
+.left form  .btn {
   text-decoration: none;
   padding: 13px 40px;
   background: #1a73e8;
@@ -105,25 +143,26 @@ h2 {
   font-size: 15px;
 }
 
-.btn-dangky {
+.left form .btn-dangky {
   /* flex: 0 0 100%; */
   width: 97%;
 }
 
-.btn:hover {
+.left form .btn:hover {
   background: #155ab6;
 }
 
-p {
+.left p {
+  width: 94%;
   text-align: center;
   margin-top: 20px;
 }
 
-p a {
+.left p a {
   color: #1a73e8;
   text-decoration: none;
 }
 
-p a:hover {
+.left p a:hover {
   text-decoration: underline;
 }

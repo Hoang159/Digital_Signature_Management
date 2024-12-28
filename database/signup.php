@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($password !== $confirm_password) {
         $error_message = "Mật khẩu và xác nhận mật khẩu không khớp.";
     } else {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Kiểm tra tên người dùng đã tồn tại
         $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
@@ -31,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // Thêm người dùng mới vào cơ sở dữ liệu
             $stmt = $pdo->prepare("INSERT INTO users (username, password, full_name, email, phonenumber, address) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$username, $hashed_password, $full_name, $email, $phonenumber, $address]);
+            $stmt->execute([$username, $password, $full_name, $email, $phonenumber, $address]);
             header("Location: ../database/signin.php");
             exit;
             
