@@ -313,7 +313,7 @@ body {
 .sb2-quanly .table-management .table .no-data {
     text-align: center;
     padding: 20px;
-    color: #666;
+    color: black;
 }
 .sb2-quanly .table-management .table th.button-cell, 
 .sb2-quanly .table-management .table td.button-cell {

@@ -1,5 +1,6 @@
 <?php
 include '../../database/connect_pdo.php'; 
+include '../main_functions/create_key/generate_rsa_keys.php';
 
 // Truy vấn request
 $sql = "SELECT * FROM request";
@@ -45,8 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         if ($request_data) {
             // Tạo giá trị ngẫu nhiên
-            $public_key = random_int(1, 99);  
-            $private_key = random_int(1, 99);
+            // $public_key = random_int(1, 99);  
+            // $private_key = random_int(1, 99);
+
+            $keys = generateRSAKeys(512); // Gọi hàm tạo khóa RSA
+            $public_key = $keys['public_key']; // Lấy toàn bộ public key
+            $private_key = $keys['private_key']; // Lấy toàn bộ private key
     
             // Chèn vào bảng 'management'
             $query = "INSERT INTO management (full_name, username, email, phonenumber, address, public_key, private_key) 
@@ -58,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(':email', $request_data['email'], PDO::PARAM_STR);
             $stmt->bindParam(':phonenumber', $request_data['phonenumber'], PDO::PARAM_STR);
             $stmt->bindParam(':address', $request_data['address'], PDO::PARAM_STR);
-            $stmt->bindParam(':public_key', $public_key, PDO::PARAM_INT);
-            $stmt->bindParam(':private_key', $private_key, PDO::PARAM_INT);
+            $stmt->bindParam(':public_key', $public_key, PDO::PARAM_STR);
+            $stmt->bindParam(':private_key', $private_key, PDO::PARAM_STR);
     
             if ($stmt->execute()) {
                 // Xóa yêu cầu trong bảng request
@@ -124,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <form action="../../functions/admin/admin_duyet.php" method="POST">
                                 <input type="hidden" name="action" value="accept" />
                                 <input type="hidden" name="username" value="<?= htmlspecialchars($request['username']) ?>" />
-                                <button ><i class="fa-solid fa-xmark"></i></button>
+                                <button ><i class="fa-solid fa-check"></i></button>
                             </form>
                             
                             </td>

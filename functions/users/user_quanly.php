@@ -46,14 +46,14 @@ try {
                         <td>1</td>
                         <td>Public Key</td>
                         <td><a href="#" class="xemlink">Xem</a></td>
-                        <td><?php echo htmlspecialchars($row['full_name']); ?></td>
+                        <td><?php echo htmlspecialchars($full_name); ?></td>
                         <td><a href="#" class="downloadLink">Download</a></td>
                     </tr>
                     <tr data-private-key="<?php echo htmlspecialchars($row['private_key']); ?>">
                         <td>2</td>
                         <td>Private Key</td>
                         <td><a href="#" class="xemlink">Xem</a></td>
-                        <td><?php echo htmlspecialchars($row['full_name']); ?></td>
+                        <td><?php echo htmlspecialchars($full_name); ?></td>
                         <td><a href="#" class="downloadLink">Download</a></td>
                     </tr>
             <?php else: ?>

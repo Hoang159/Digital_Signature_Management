@@ -55,8 +55,8 @@ CREATE TABLE `management` (
   `email` varchar(50) NOT NULL,
   `phonenumber` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `public_key` varchar(255) NOT NULL,
-  `private_key` varchar(255) NOT NULL,
+  `public_key` varchar(2048) NOT NULL,
+  `private_key` varchar(2048) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -92,9 +92,6 @@ CREATE TABLE `request` (
 --
 -- Đang đổ dữ liệu cho bảng `request`
 --
-
-INSERT INTO `request` (`id`, `full_name`, `username`, `email`, `phonenumber`, `address`, `created_at`) VALUES
-(1, 'tài khoản test', 'test', 'test@gmail.com', '0123456789', 'Hà Nội', '2024-12-28 05:15:14');
 
 -- --------------------------------------------------------
 

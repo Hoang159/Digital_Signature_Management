@@ -16,16 +16,18 @@ function generateRSAKeys($keySize = 2048) {
     }
 
     // Lấy khóa riêng (private key)
-    openssl_pkey_export($resource, $privatekey);
+    openssl_pkey_export($resource, $private_key);
 
     // Lấy khóa công khai (public key)
     $publickeyDetails = openssl_pkey_get_details($resource);
-    $publickey = $publickeyDetails['key'];
+    $public_key = $publickeyDetails['key'];
 
     // Trả về mảng chứa khóa công khai và khóa riêng
     return [
-        'publickey' => $publickey,
-        'privatekey' => $privatekey
+        'public_key' => $public_key,
+        'private_key' => $private_key
     ];
+
 }
+
 ?>
