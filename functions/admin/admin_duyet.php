@@ -1,11 +1,84 @@
 <?php
 include '../../database/connect_pdo.php'; 
 
-// Truy vấn dữ liệu từ bảng request
+// Truy vấn request
 $sql = "SELECT * FROM request";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? '';
+    $username = trim($_POST['username'] ?? '');
+
+    if ($action === 'reject' && !empty($username)) {
+        // Cập nhật bảng "noti"
+        $query1 = "UPDATE noti SET answer = 0 WHERE username = :username";
+        $stmt1 = $pdo->prepare($query1);
+        $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
+
+        if ($stmt1->execute()) {
+            // Xóa trong bảng "request"
+            $query = "DELETE FROM request WHERE username = :username";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+
+            if ($stmt->execute()) {
+                header("Location: ../../src/components/admin_home.html");
+                exit;
+            } else {
+                
+                echo "Lỗi: Không thể từ chối";
+            }
+        } else {
+            // Lỗi khi cập nhật thông báo
+            echo "Lỗi: Không thể cập nhật thông báo";
+        }
+    } else if ($action === 'accept' && !empty($username)) {
+
+        // Lấy thông tin từ bảng request
+        $query = "SELECT full_name, email, phonenumber, address FROM request WHERE username = :username";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $request_data = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($request_data) {
+            // Tạo giá trị ngẫu nhiên
+            $public_key = random_int(1, 99);  
+            $private_key = random_int(1, 99);
+    
+            // Chèn vào bảng 'management'
+            $query = "INSERT INTO management (full_name, username, email, phonenumber, address, public_key, private_key) 
+                      VALUES (:full_name, :username, :email, :phonenumber, :address, :public_key, :private_key)";
+    
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':full_name', $request_data['full_name'], PDO::PARAM_STR);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $request_data['email'], PDO::PARAM_STR);
+            $stmt->bindParam(':phonenumber', $request_data['phonenumber'], PDO::PARAM_STR);
+            $stmt->bindParam(':address', $request_data['address'], PDO::PARAM_STR);
+            $stmt->bindParam(':public_key', $public_key, PDO::PARAM_INT);
+            $stmt->bindParam(':private_key', $private_key, PDO::PARAM_INT);
+    
+            if ($stmt->execute()) {
+                // Xóa yêu cầu trong bảng request
+                $query1 = "DELETE FROM request WHERE username = :username";
+                $stmt1 = $pdo->prepare($query1);
+                $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
+                $stmt1->execute();
+                
+                header("Location: ../../src/components/admin_home.html");
+                exit;
+            } else {
+                echo "Lỗi khi chèn dữ liệu vào bảng management.";
+            }
+        } else {
+            echo "Không tìm thấy yêu cầu cho username: $username.";
+        }
+    }
+    
+}
 
 ?>
 
@@ -47,10 +120,22 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <!-- <td><a href="#"> Duyệt </a></td>
                             <td><a href="#"> Hủy </a></td> -->
                             <td class="button-cell"> 
-                                <button><i class="fa-solid fa-check"></i></button> 
+
+                            <form action="../../functions/admin/admin_duyet.php" method="POST">
+                                <input type="hidden" name="action" value="accept" />
+                                <input type="hidden" name="username" value="<?= htmlspecialchars($request['username']) ?>" />
+                                <button ><i class="fa-solid fa-xmark"></i></button>
+                            </form>
+                            
                             </td>
                             <td class="button-cell"> 
+
+                               <form action="../../functions/admin/admin_duyet.php" method="POST">
+                                <input type="hidden" name="action" value="reject" />
+                                <input type="hidden" name="username" value="<?= htmlspecialchars($request['username']) ?>" />
                                 <button ><i class="fa-solid fa-xmark"></i></button>
+                                </form>
+                                
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -32,6 +32,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $stmt->bindParam(':phonenumber', $phonenumber);
       $stmt->bindParam(':username', $username);
 
+      // Truy vấn bảng " noti"
+       $answerQuery = "SELECT answer  FROM noti  WHERE username = :username ";
+       $answerStmt = $pdo->prepare($answerQuery);
+       $answerStmt->bindParam(':username', $username, PDO::PARAM_STR);
+       $answerStmt->execute();
+       $answer = $answerStmt->fetchColumn();
+
+       if ($answer == 1){
+        $query1 = "UPDATE noti SET answer = 0 WHERE username = :username";
+        $stmt1 = $pdo->prepare($query1);
+        $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt1->execute();
+        }
+      
+
       if ($stmt->execute()) {
           $_SESSION['full_name'] = $full_name;
           $_SESSION['address'] = $address;

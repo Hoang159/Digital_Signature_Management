@@ -1,4 +1,3 @@
-
 <?php
 include '../../database/connect_pdo.php';
 session_start();
@@ -10,19 +9,30 @@ $email = $_SESSION['email'];
 $phonenumber = $_SESSION['phonenumber'];
 
 // Kiểm tra nếu đã đăng ký hay chưa
-$checkQuery = "SELECT COUNT(*) FROM request 
-               WHERE username = :username ";
+$checkQuery = "SELECT COUNT(*) FROM request WHERE username = :username ";
 $checkStmt = $pdo->prepare($checkQuery);
-
-// Bind các tham số đúng với các placeholder trong câu lệnh SQL
 $checkStmt->bindParam(':username', $username, PDO::PARAM_STR);
-
 $checkStmt->execute();
 $checkrequest = $checkStmt->fetchColumn();
 
-//$requestData = [];
+// Kiểm tra trong bảng users
 
-if ($checkrequest > 0) {
+$userQuery = "SELECT is_registered FROM users WHERE username = :username";
+$userStmt = $pdo->prepare($userQuery);
+$userStmt->bindParam(':username', $username, PDO::PARAM_STR);
+$userStmt->execute();
+$is_registered = $userStmt->fetchColumn();
+
+// Kiểm tra answer trong noti
+$answerQuery = "SELECT answer  FROM noti  WHERE username = :username ";
+$answerStmt = $pdo->prepare($answerQuery);
+$answerStmt->bindParam(':username', $username, PDO::PARAM_STR);
+$answerStmt->execute();
+$answer = $answerStmt->fetchColumn();
+
+//$requestData = [];
+if ($answer == 0 || $answer === NULL){
+if ($checkrequest > 0 && $is_registered == 0 ) {
     // Nếu đã đăng ký rồi, thông báo
     $success_message = "Đã đăng ký thành công ";
     $formSubmitted = true;
@@ -38,11 +48,10 @@ if ($checkrequest > 0) {
     // } else {
     //     $error_message = "Không tìm thấy dữ liệu đăng ký.";
     // }
-} else {
-
-    // Biến để kiểm tra form đã được gửi
-    $formSubmitted = false;
-
+} else if ($checkrequest > 0 && $is_registered == 1 ) {
+    // Nếu đã đăng ký rồi, thông báo
+    //$success_message = "Đã đăng ký thành công ";
+    $formSubmitted = false; 
     // Kiểm tra nếu form đã được gửi
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Lấy giá trị từ form
@@ -54,8 +63,12 @@ if ($checkrequest > 0) {
 
 
         // Câu lệnh SQL để chèn kết quả vào bảng 'request'
-        $query = "INSERT INTO request (full_name, username, email, phonenumber, address) 
-                  VALUES (:full_name, :username, :email, :phonenumber, :address)";
+        $query = "UPDATE request 
+        SET full_name = :full_name, 
+            email = :email, 
+            phonenumber = :phonenumber, 
+            address = :address
+        WHERE username = :username";
 
         // Chuẩn bị câu lệnh
         $stmt = $pdo->prepare($query);
@@ -69,6 +82,12 @@ if ($checkrequest > 0) {
 
         // Thực thi câu lệnh
         if ($stmt->execute()) {
+            // Cập nhật is_registered = 0 trong bảng 'users'
+        $updateUserQuery = "UPDATE users SET is_registered = 0 WHERE username = :username";
+        $updateUserStmt = $pdo->prepare($updateUserQuery);
+        $updateUserStmt->bindParam(':username', $username, PDO::PARAM_STR);
+        
+        if ($updateUserStmt->execute()) {
             $success_message = "Đánh giá của bạn đã được gửi thành công! ";
             $formSubmitted = true;
             header("Location: ../../src/components/home.html");
@@ -77,6 +96,102 @@ if ($checkrequest > 0) {
             $error_message = "Có lỗi xảy ra trong quá trình gửi đánh giá.";
         }
     }
+    }
+
+} else if ($checkrequest == 0 && $is_registered == 1 ) {
+    // Biến để kiểm tra form đã được gửi
+    $formSubmitted = false;
+
+    // Kiểm tra nếu form đã được gửi
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Lấy giá trị từ form
+        $full_name = $_POST['full_name']; // Thêm trường này trong form để lấy tên đầy đủ
+        $username = $_POST['username']; // Thêm trường này để lấy username
+        $email = $_POST['email']; // Thêm trường này để lấy email
+        $phonenumber = $_POST['phonenumber']; // Thêm trường này để lấy số điện thoại
+        $address = $_POST['address']; // Thêm trường này để lấy địa chỉ
+
+
+        // Chèn kết quả vào bảng 'request'
+        $query = "INSERT INTO request (full_name, username, email, phonenumber, address) 
+                  VALUES (:full_name, :username, :email, :phonenumber, :address)";
+
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':full_name', $full_name, PDO::PARAM_STR);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':phonenumber', $phonenumber, PDO::PARAM_STR);
+        $stmt->bindParam(':address', $address, PDO::PARAM_STR);
+
+        // Chèn kết quả vào bảng 'noti'
+        $query1 = "INSERT INTO noti (username) 
+        VALUES (:username)";
+        $stmt1 = $pdo->prepare($query1);
+        $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt1->execute();
+
+        // Thực thi câu lệnh
+        if ($stmt->execute()) {
+             // Cập nhật is_registered = 0 trong bảng 'users'
+        $updateUserQuery = "UPDATE users SET is_registered = 0 WHERE username = :username";
+        $updateUserStmt = $pdo->prepare($updateUserQuery);
+        $updateUserStmt->bindParam(':username', $username, PDO::PARAM_STR);
+        
+        if ($updateUserStmt->execute()) {
+            $success_message = "Đánh giá của bạn đã được gửi thành công! ";
+            $formSubmitted = true;
+            header("Location: ../../src/components/home.html");
+            exit;
+        } else {
+            $error_message = "Có lỗi xảy ra trong quá trình gửi đánh giá.";
+        }
+    }
+    }
+}else if ($checkrequest == 0 && $is_registered == 0 ) {
+    // Biến để kiểm tra form đã được gửi
+    $formSubmitted = false;
+
+    // Kiểm tra nếu form đã được gửi
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Lấy giá trị từ form
+        $full_name = $_POST['full_name']; // Thêm trường này trong form để lấy tên đầy đủ
+        $username = $_POST['username']; // Thêm trường này để lấy username
+        $email = $_POST['email']; // Thêm trường này để lấy email
+        $phonenumber = $_POST['phonenumber']; // Thêm trường này để lấy số điện thoại
+        $address = $_POST['address']; // Thêm trường này để lấy địa chỉ
+
+
+        // Chèn kết quả vào bảng 'request'
+        $query = "INSERT INTO request (full_name, username, email, phonenumber, address) 
+                  VALUES (:full_name, :username, :email, :phonenumber, :address)";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':full_name', $full_name, PDO::PARAM_STR);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':phonenumber', $phonenumber, PDO::PARAM_STR);
+        $stmt->bindParam(':address', $address, PDO::PARAM_STR);
+
+        // Chèn kết quả vào bảng 'noti'
+        $query1 = "INSERT INTO noti (username) 
+                  VALUES (:username)";
+        $stmt1 = $pdo->prepare($query1);
+        $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt1->execute();
+
+        // Thực thi câu lệnh
+        if ($stmt->execute()) {
+            $success_message = "Đánh giá của bạn đã được gửi thành công! ";
+            $formSubmitted = true;
+            header("Location: ../../src/components/home.html");
+            exit;
+        } else {
+            $error_message = "Có lỗi xảy ra trong quá trình gửi đánh giá.";
+        }
+    }
+}
+} else if ($answer == 1){
+    $error_message = "Bạn đã bị từ chối tài khoản khi đăng ký";
+    $formSubmitted = true;
 }
 ?>
 
@@ -171,9 +286,9 @@ if ($checkrequest > 0) {
              <!-- thay đổi thông tin thì hiển nút gửi đánh giá -->
 
             <?php if (!$formSubmitted) { ?>
-            <form action="user_dangky.php.php" method="POST">
+            
                 <button type="submit">Gửi đăng ký</button>
-            </form> 
+            
             <?php } ?>
             
         </form>
