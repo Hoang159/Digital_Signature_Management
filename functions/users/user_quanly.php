@@ -1,12 +1,21 @@
-
 <?php
+include '../../database/connect_pdo.php'; 
 session_start();
+
 // Lấy thông tin người dùng từ session
 $username = $_SESSION['username'];
 $full_name = $_SESSION['full_name'];
-$address = $_SESSION['address'];
-$email = $_SESSION['email'];
-$phonenumber = $_SESSION['phonenumber'];
+
+try {
+    // Lấy dữ liệu từ bảng management
+    $stmt = $pdo->prepare("SELECT * FROM management WHERE username = :username");
+    $stmt->execute(['username' => $username]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    die("Lỗi truy vấn cơ sở dữ liệu: " . $e->getMessage());
+}
+
 ?>
 
 <html>
@@ -32,20 +41,26 @@ $phonenumber = $_SESSION['phonenumber'];
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Public Key</td>
-                <td><a href="#" class="xemlink">Xem</a></td>
-                <td><?php echo htmlspecialchars($full_name); ?></td>
-                <td><a href="#">Download</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Private Key</td>
-                <td><a href="#" class="xemlink">Xem</a></td>
-                <td><?php echo htmlspecialchars($full_name); ?></td>
-                <td><a href="#">Download</a></td>
-            </tr>
+            <?php if ($row): ?>
+                    <tr data-public-key="<?php echo htmlspecialchars($row['public_key']); ?>">
+                        <td>1</td>
+                        <td>Public Key</td>
+                        <td><a href="#" class="xemlink">Xem</a></td>
+                        <td><?php echo htmlspecialchars($row['full_name']); ?></td>
+                        <td><a href="#" class="downloadLink">Download</a></td>
+                    </tr>
+                    <tr data-private-key="<?php echo htmlspecialchars($row['private_key']); ?>">
+                        <td>2</td>
+                        <td>Private Key</td>
+                        <td><a href="#" class="xemlink">Xem</a></td>
+                        <td><?php echo htmlspecialchars($row['full_name']); ?></td>
+                        <td><a href="#" class="downloadLink">Download</a></td>
+                    </tr>
+            <?php else: ?>
+                    <tr>
+                        <td colspan="5" style="text-align: center;">Chưa có dữ liệu</td>
+                    </tr>
+            <?php endif; ?>
         </tbody>
     </table>
 

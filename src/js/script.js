@@ -208,6 +208,7 @@ function attachdynamicModalEvents() {
 function attachdynamicModal2Events() {
     // Lấy tất cả các liên kết "Xem" trong bảng
     const xemLinks2 = document.querySelectorAll(".sb2-quanly table tbody tr td .xemlink");
+    const downloadLinks = document.querySelectorAll(".sb2-quanly table tbody tr td .downloadLink");
 
     // Lấy dmodal
     const dmodal2 = document.getElementById("dynamicModal2");
@@ -224,17 +225,58 @@ function attachdynamicModal2Events() {
             // const soThuTu = row.cells[0].innerText;
             const tieude = row.cells[1].innerText;
             const nguoisohuu = row.cells[3].innerText;
+            const publicKey = row.getAttribute('data-public-key');
+            const privateKey = row.getAttribute('data-private-key');
+
+            let keyInfo = '';
+
+            // Kiểm tra loại khóa và hiển thị thông tin tương ứng
+            if (tieude === 'Public Key') {
+                keyInfo = publicKey;
+            } else if (tieude === 'Private Key') {
+                keyInfo = privateKey;
+            }
 
             // Gán nội dung vào dmodal2
             dmodal2Content.innerHTML = `
                 <p><strong>Người sở hữu:</strong> ${nguoisohuu}</p>
                 <p><strong>Tiêu đề:</strong> ${tieude}</p>
-                <p><strong>Thông tin:</strong> </p>
+                <p><strong>Thông tin:</strong> ${keyInfo}</p>
                 
             `;
 
             // Hiển thị dmodal2
             dmodal2.style.display = "block";
+        });
+    });
+
+    // Khi người dùng click vào Download
+    downloadLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const row = this.closest("tr");
+
+            // Lấy giá trị public_key hoặc private_key từ thuộc tính data của hàng
+            const publicKey = row.getAttribute('data-public-key');
+            const privateKey = row.getAttribute('data-private-key');
+            const tieude = row.cells[1].innerText;
+
+            let keyData = '';
+
+            // Chọn khóa dựa trên tiêu đề
+            if (tieude === 'Public Key') {
+                keyData = publicKey;
+            } else if (tieude === 'Private Key') {
+                keyData = privateKey;
+            }
+
+            // Tạo file .txt và tải xuống
+            const blob = new Blob([keyData], { type: 'text/plain' });
+            const linkElement = document.createElement('a');
+            linkElement.href = URL.createObjectURL(blob);
+            linkElement.download = tieude + '.txt';  // Đặt tên file là Public Key hoặc Private Key
+            linkElement.click();
         });
     });
 

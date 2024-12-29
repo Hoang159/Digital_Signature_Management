@@ -1,20 +1,20 @@
 <?php
 session_start(); // Bắt đầu session
-require_once '../../../database/connect_pdo.php';
-require_once '../../../functions/main_functions/create_key/generate_rsa_keys.php'; // Tạo khóa RSA
+require_once '../../database/connect_pdo.php';
+require_once '../main_functions/create_key/generate_rsa_keys.php'; // Tạo khóa RSA
 
 // Kiểm tra nếu form được gửi qua POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Lấy thông tin từ form
-    $username = $_POST['account']; // Lấy từ input "Tên tài khoản"
-    $name = $_POST['name'];        // Lấy từ input "Họ và tên"
-    $address = $_POST['address'];  // Lấy từ input "Địa chỉ"
-    $email = $_POST['email'];      // Lấy từ input "Email"
-    $phone = $_POST['phone'];      // Lấy từ input "Số điện thoại"
+    $username = $_POST['username'];             // Lấy từ input "Tên tài khoản"
+    $full_name = $_POST['full_name'];           // Lấy từ input "Họ và tên"
+    $email = $_POST['email'];                   // Lấy từ input "Email"
+    $phonenumber = $_POST['phonenumber'];       // Lấy từ input "Số điện thoại"
+    $address = $_POST['address'];               // Lấy từ input "Địa chỉ"
 
     try {
         // Kiểm tra nếu username đã tồn tại trong cơ sở dữ liệu
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT * FROM management WHERE username = :username");
         $stmt->execute([':username' => $username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -26,15 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Thêm người dùng mới
             $insertStmt = $pdo->prepare("
-                INSERT INTO users (username, name, address, phone, email, public_key, private_key, created_at) 
-                VALUES (:username, :name, :address, :phone, :email, :public_key, :private_key, NOW())
+                INSERT INTO management (username, full_name, email, phonenumber, address, public_key, private_key, created_at) 
+                VALUES (:username, :full_name, :email, :phonenumber, :address, :public_key, :private_key, NOW())
             ");
             $insertStmt->execute([
                 ':username' => $username,
-                ':name' => $name,
-                ':address' => $address,
-                ':phone' => $phone,
+                ':full_name' => $full_name,
                 ':email' => $email,
+                ':phonenumber' => $phonenumber,
+                ':address' => $address,
                 ':public_key' => $publickey,  // Lưu toàn bộ public key
                 ':private_key' => $privatekey // Lưu toàn bộ private key
             ]);
