@@ -7,6 +7,7 @@
 1. Cài đặt VS Code.
 2. Cài đặt XAMPP để sử dụng cơ sở dữ liệu.
 3. Cài đặt ngrok để tạo đường dẫn trên Internet tới dự án.
+4. Cài đặt OpenSSL để tạo Private Key, Public Key (chức năng cho admin)
 
 ## Hướng dẫn cài đặt
 1. **Fork** dự án từ link: **https://github.com/Hoang159/Digital_Signature_Management.git**
@@ -45,7 +46,6 @@ Digital_Signature_Management/
 │   ├── images
 │   ├── videos
 ├── docs/                   # Chứa tài liệu hoặc hướng dẫn,...
-├── vendor/                 # Công cụ để upload file
 ├── index.html              # Trang chính của dự án
 └── README.md               # Hướng dẫn chi tiết
 ```

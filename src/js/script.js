@@ -307,6 +307,7 @@ function uploadHashSignEvents() {
     const fileInputPri = document.getElementById('file-input-prikey');
     const signBtn = document.getElementById('sign-btn');
     const downloadLinks2 = document.querySelectorAll(".sb3-xacminh .section-xacminh .form-group.actions .downloadLink2");
+
     let hashHex = ''; // Khai báo hashHex ở phạm vi toàn cục
 
     // Hàm băm dùng SHA-256
@@ -321,7 +322,7 @@ function uploadHashSignEvents() {
                 // Calculate SHA-256 hash
                 const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(fileContents));
                 const hashArray = Array.from(new Uint8Array(hashBuffer)); // Convert buffer to byte array
-                const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join(''); // Convert bytes to hex string
+                hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join(''); // Convert bytes to hex string
 
                 // Display hash in the input field
                 document.getElementById('result-hash').value = hashHex;
@@ -412,15 +413,28 @@ function uploadVerifyEvents() {
     const fileInput2 = document.getElementById('file-input2');
     const verifyBtn = document.getElementById('verify-btn');
     const fileInputPub = document.getElementById('file-input-pubkey');
+    const fileInputOri = document.getElementById('file-input-original');
     let fileContents2 = '';
+    let hashHex2 = '';
 
     // Nút giải mã
     verifyBtn.addEventListener('click', () => {
         const fileIn2 = fileInput2.files[0]; // Get the selected file
         const fileInPub = fileInputPub.files[0]; // Get the selected file
-        if (fileIn2 && fileInPub) {
+        const fileInOri = fileInputOri.files[0]; // Get the selected file
+        if (fileIn2 && fileInPub && fileInOri) {
             const reader2 = new FileReader();
             const readerPub = new FileReader();
+            const readerOri = new FileReader();
+
+            readerOri.onload = async (e) => {
+                const fileContentsOri = e.target.result;
+
+                // Calculate SHA-256 hash
+                const hashBuffer2 = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(fileContentsOri));
+                const hashArray2 = Array.from(new Uint8Array(hashBuffer2)); // Convert buffer to byte array
+                hashHex2 = hashArray2.map(byte => byte.toString(16).padStart(2, '0')).join(''); // Convert bytes to hex string
+            };
 
             reader2.onload = async (e) => {
                 fileContents2 = e.target.result;
@@ -449,9 +463,9 @@ function uploadVerifyEvents() {
                 // // Chuyển đổi chữ ký từ base64 (fileContents2) sang mảng byte
                 const binarySignature = new Uint8Array(atob(fileContents2).split('').map(c => c.charCodeAt(0)));
 
-                // const encodedMessage = new TextEncoder().encode(binarySignature);
+                // const encodedMessage2 = new TextEncoder().encode(binarySignature);
 
-                const encodedMessage = new TextEncoder().encode(fileContents2);
+                const encodedMessage2 = new TextEncoder().encode(hashHex2);
 
                 // Xác minh chữ ký
                 const resultVerify = await crypto.subtle.verify(
@@ -460,24 +474,24 @@ function uploadVerifyEvents() {
                     },
                     publicKeyObj, // Public key để xác minh
                     binarySignature,
-                    encodedMessage // Thông điệp gốc
+                    encodedMessage2 // Thông điệp gốc
                 );
 
-                // // Hiển thị kết quả xác minh
-                // if (isValid) {
-                //     document.getElementById('result-verify').value = 'Chữ ký hợp lệ!';
-                // } else {
-                //     document.getElementById('result-verify').value = 'Chữ ký không hợp lệ!';
-                // }
+                // Hiển thị kết quả xác minh
+                if (resultVerify) {
+                    document.getElementById('result-verify').value = 'Văn bản và chữ ký đều hợp lệ.';
+                } else {
+                    document.getElementById('result-verify').value = 'Chữ ký không hợp lệ hoặc văn bản đã bị thay đổi!';
+                }
 
-                // Display kết quả sau khi giải mã
-                document.getElementById('result-verify').value = resultVerify;
+                // // Display kết quả sau khi giải mã
+                // document.getElementById('result-verify').value = resultVerify;
             };
-
-            reader2.readAsText(fileIn2); // Read the file as text (for this example)
-            readerPub.readAsText(fileInPub); // Read the file as text (for this example)
+            readerOri.readAsText(fileInOri); 
+            reader2.readAsText(fileIn2); 
+            readerPub.readAsText(fileInPub); 
         } else {
-            alert("Vui lòng chọn đầy đủ cả 2 file trước.");
+            alert("Vui lòng chọn đầy đủ cả 3 file trước.");
         }
     });
     

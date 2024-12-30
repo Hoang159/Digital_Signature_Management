@@ -43,6 +43,8 @@
     <div class="section-xacminh">
         <h2>Xác thực người gửi</h2>
         <div class="form-group">
+            <label for="file-input-original">Upload văn bản gốc</label>
+            <input type="file" id="file-input-original"> <br> <br>
             <label for="file-input2">Upload văn bản đã ký</label>
             <input type="file" id="file-input2"> <br> <br>
             <label for="file-input-pubkey">Upload Public Key</label>
