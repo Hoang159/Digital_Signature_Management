@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'reject' && !empty($username)) {
         // Cập nhật bảng "noti"
-        $query1 = "UPDATE noti SET answer = 0 WHERE username = :username";
+        $query1 = "UPDATE noti SET answer = 1 WHERE username = :username";
         $stmt1 = $pdo->prepare($query1);
         $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
 
@@ -48,6 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Tạo giá trị ngẫu nhiên
             // $public_key = random_int(1, 99);  
             // $private_key = random_int(1, 99);
+
+            $sql = "UPDATE users SET is_registered = 2 WHERE username = :username";
+            $stmt1 = $pdo->prepare($sql);
+            $stmt1->bindParam(':username', $username );
+            $stmt1->execute();
 
             $keys = generateRSAKeys(512); // Gọi hàm tạo khóa RSA
             $public_key = $keys['public_key']; // Lấy toàn bộ public key
@@ -100,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
     <div class="table-request">
-        <h3> Các yêu cầu chữ ký </h3>
+        <h3> Các yêu cầu nhận bộ khóa </h3>
         <table class="table">
             <thead>
                 <tr>

@@ -123,12 +123,25 @@ if ($checkrequest > 0 && $is_registered == 0 ) {
         $stmt->bindParam(':phonenumber', $phonenumber, PDO::PARAM_STR);
         $stmt->bindParam(':address', $address, PDO::PARAM_STR);
 
+        $countanswerQuery = "SELECT COUNT(*) FROM noti WHERE username = :username ";
+        $countanswerStmt = $pdo->prepare($countanswerQuery);
+        $countanswerStmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $countanswerStmt->execute();
+        $countanswerrequest = $countanswerStmt->fetchColumn();
+
+        if ($countanswerrequest > 0){
+        $sql = "UPDATE noti SET username = :username  WHERE username = :username";
+        $stmt2 = $pdo->prepare($sql);
+        $stmt2->bindParam(':username', $username );
+        $stmt2->execute();
+        }else {
         // Chèn kết quả vào bảng 'noti'
         $query1 = "INSERT INTO noti (username) 
         VALUES (:username)";
         $stmt1 = $pdo->prepare($query1);
         $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt1->execute();
+        }
 
         // Thực thi câu lệnh
         if ($stmt->execute()) {
@@ -171,12 +184,27 @@ if ($checkrequest > 0 && $is_registered == 0 ) {
         $stmt->bindParam(':phonenumber', $phonenumber, PDO::PARAM_STR);
         $stmt->bindParam(':address', $address, PDO::PARAM_STR);
 
+        $countanswerQuery = "SELECT COUNT(*) FROM noti WHERE username = :username ";
+        $countanswerStmt = $pdo->prepare($countanswerQuery);
+        $countanswerStmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $countanswerStmt->execute();
+        $countanswerrequest = $countanswerStmt->fetchColumn();
+
+       if ($countanswerrequest > 0){
+        $sql = "UPDATE noti SET username = :username  WHERE username = :username";
+        $stmt2 = $pdo->prepare($sql);
+        $stmt2->bindParam(':username', $username );
+        $stmt2->execute();
+       }else {
+
         // Chèn kết quả vào bảng 'noti'
         $query1 = "INSERT INTO noti (username) 
                   VALUES (:username)";
         $stmt1 = $pdo->prepare($query1);
         $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt1->execute();
+
+        }
 
         // Thực thi câu lệnh
         if ($stmt->execute()) {
@@ -188,9 +216,14 @@ if ($checkrequest > 0 && $is_registered == 0 ) {
             $error_message = "Có lỗi xảy ra trong quá trình gửi đánh giá.";
         }
     }
+
+}else if ($checkrequest == 0 && $is_registered == 2 ) {
+    $success_message = "Tài khoản của bạn đã đươc cấp bộ khóa!";
+    $formSubmitted = true;
+
 }
 } else if ($answer == 1){
-    $error_message = "Bạn đã bị từ chối tài khoản khi đăng ký";
+    $error_message = "Bạn đã bị từ chối cấp bộ khóa, hãy thay đổi thông tin và gửi lại để đăng ký";
     $formSubmitted = true;
 }
 ?>
@@ -212,7 +245,7 @@ if ($checkrequest > 0 && $is_registered == 0 ) {
         <p>Điền form để nhận bộ khóa Private Key và Public Key</p>
         <ul>
             <li>Xác minh danh tính của người gửi văn bản thông qua chữ ký số.</li>
-            <li>Đảm bảo nội dung không bị chỉnh sửa hoặc giả mạo sau khi ký.</li>
+            <li>Đảm bảo nội dung văn bản sau khi ký không bị chỉnh sửa hoặc giả mạo so với văn bản gốc.</li>
             <li>Tăng cường tính bảo mật trong giao dịch, đặc biệt với tài liệu quan trọng.</li>
         </ul>
     </div>

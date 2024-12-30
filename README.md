@@ -36,8 +36,8 @@ Digital_Signature_Management/
 │   ├── css  
 │   ├── js        
 ├── database/               # Cơ sở dữ liệu và kết nối
-├── functions/              # Chức năng của phần mềm
-│   ├── functions_python  
+├── functions/              # Chức năng của phần mềm (PHP thuần)
+│   ├── main_functions 
 │   ├── admin  
 │   ├── users    
 ├── assets/                 # Phần chung của dự án (Font chữ, hình ảnh, videos, ...)
@@ -45,6 +45,7 @@ Digital_Signature_Management/
 │   ├── images
 │   ├── videos
 ├── docs/                   # Chứa tài liệu hoặc hướng dẫn,...
+├── vendor/                 # Công cụ để upload file
 ├── index.html              # Trang chính của dự án
 └── README.md               # Hướng dẫn chi tiết
 ```

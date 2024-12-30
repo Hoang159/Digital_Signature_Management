@@ -107,6 +107,10 @@ function loadPHPContent(section, url, sectionId) {
             if (sectionId === "admin_quanly") {
                 attachdynamicModalEvents(section); 
             }
+            if (sectionId === "xacminh"){
+                uploadHashSignEvents(section);
+                uploadVerifyEvents(section);
+            }
         })
         .catch(error => {
             console.error('Error fetching PHP file:', error);
@@ -154,7 +158,7 @@ function attachModal2Events() {
     }
 }
 
-// Modal động dành cho quản lý ở admin
+// Modal động dành cho admin_quanly
 function attachdynamicModalEvents() {
     // Lấy tất cả các liên kết "Xem" trong bảng
     const xemLinks = document.querySelectorAll(".table tbody tr td .xemlink");
@@ -175,7 +179,9 @@ function attachdynamicModalEvents() {
             const chuSoHuu = row.cells[1].innerText;
             const hoVaTen = row.cells[2].innerText;
             const soDienThoai = row.cells[3].innerText;
-            const publicKey = row.cells[4].innerText;
+            const publicKeyuser = row.getAttribute('public-key-user');
+            let keyUser = '';
+            keyUser = publicKeyuser;
 
             // Gán nội dung vào dmodal
             dmodalContent.innerHTML = `
@@ -183,7 +189,7 @@ function attachdynamicModalEvents() {
                 <p><strong>Chủ sở hữu:</strong> ${chuSoHuu}</p>
                 <p><strong>Họ và tên:</strong> ${hoVaTen}</p>
                 <p><strong>Số điện thoại:</strong> ${soDienThoai}</p>
-                <p><strong>Public Key:</strong> ${publicKey}</p>
+                <p><strong>Public Key:</strong> ${keyUser}</p>
             `;
 
             // Hiển thị dmodal
@@ -204,7 +210,7 @@ function attachdynamicModalEvents() {
     });
 }
 
-// Modal động dành cho quản lý ở user
+// Modal động dành cho user_quanly
 function attachdynamicModal2Events() {
     // Lấy tất cả các liên kết "Xem" trong bảng
     const xemLinks2 = document.querySelectorAll(".sb2-quanly table tbody tr td .xemlink");
@@ -293,10 +299,196 @@ function attachdynamicModal2Events() {
     });
 }
 
+// Hàm Upload và lấy nội dung văn bản + Băm + Mã hóa (Ký) bằng private key trong user_xacminh
+function uploadHashSignEvents() {
+    // DOM elements
+    const fileInput = document.getElementById('file-input');
+    const hashBtn = document.getElementById('hash-btn');
+    const fileInputPri = document.getElementById('file-input-prikey');
+    const signBtn = document.getElementById('sign-btn');
+    const downloadLinks2 = document.querySelectorAll(".sb3-xacminh .section-xacminh .form-group.actions .downloadLink2");
+    let hashHex = ''; // Khai báo hashHex ở phạm vi toàn cục
+
+    // Hàm băm dùng SHA-256
+    hashBtn.addEventListener('click', () => {
+        const fileIn = fileInput.files[0]; // Get the selected file
+        if (fileIn) {
+            const reader = new FileReader();
+
+            reader.onload = async (e) => {
+                const fileContents = e.target.result;
+
+                // Calculate SHA-256 hash
+                const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(fileContents));
+                const hashArray = Array.from(new Uint8Array(hashBuffer)); // Convert buffer to byte array
+                const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join(''); // Convert bytes to hex string
+
+                // Display hash in the input field
+                document.getElementById('result-hash').value = hashHex;
+            };
+
+            reader.readAsText(fileIn); // Read the file as text (for this example)
+        } else {
+            alert("Vui lòng chọn file trước.");
+        }
+    });
+
+    // Ký bằng Private Key
+    signBtn.addEventListener('click', () => {
+        const fileInPri = fileInputPri.files[0]; // Get the selected file
+        if (fileInPri) {
+            const readerPri = new FileReader();
+
+            readerPri.onload = async (e) => {
+
+                const fileContentsPri = e.target.result;
+
+                const keyData = fileContentsPri
+                    .replace(/-----BEGIN PRIVATE KEY-----/, '')
+                    .replace(/-----END PRIVATE KEY-----/, '')
+                    .replace(/\n/g, '');
+
+                const binaryDer = Uint8Array.from(atob(keyData), c => c.charCodeAt(0));
+
+                const privateKeyObj = await crypto.subtle.importKey(
+                    'pkcs8',
+                    binaryDer.buffer,
+                    {
+                        name: 'RSASSA-PKCS1-v1_5',
+                        hash: { name: 'SHA-256' }
+                    },
+                    true,
+                    ['sign']
+                );
+
+                const encodedMessage = new TextEncoder().encode(hashHex);
+                // const encodedMessage = new Uint8Array(hashHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+                const resultSign = await crypto.subtle.sign(
+                    {
+                        name: 'RSASSA-PKCS1-v1_5'
+                    },
+                    privateKeyObj,
+                    encodedMessage
+                );
+                 // Chuyển chữ ký sang dạng base64 và hiển thị
+                 const base64Signature = btoa(String.fromCharCode(...new Uint8Array(resultSign)));
+                
+                // document.getElementById('result-sign').value = base64Signature;
+                document.getElementById('result-sign').value = base64Signature;
+            };
+
+            readerPri.readAsText(fileInPri); // Read the file as text (for this example)
+        } else {
+            alert("Vui lòng chọn file trước.");
+        }
+    });
+
+    // Khi người dùng click vào Download
+    downloadLinks2.forEach(link => {
+        link.addEventListener("click", function (event) {
+             // Lấy nội dung từ ô result-sign
+             const resultSignContent = document.getElementById('result-sign').value;
+
+             if (resultSignContent) {
+                 // Tạo Blob từ nội dung
+                 const blob2 = new Blob([resultSignContent], { type: 'text/plain' });
+                 const link2 = document.createElement('a');
+ 
+                 // Tạo URL cho Blob và trigger tải xuống
+                 link2.href = URL.createObjectURL(blob2);
+                 link2.download = 'Signed Document.txt'; // Tên file khi tải xuống
+                 link2.click();
+             } else {
+                 alert("Không có kết quả để tải xuống.");
+             }
+        });
+    });
+
+}
+
+// Hàm Upload và lấy nội dung văn bản + giải mã bằng publickey trong user_xacminh
+function uploadVerifyEvents() {
+    // DOM elements
+    const fileInput2 = document.getElementById('file-input2');
+    const verifyBtn = document.getElementById('verify-btn');
+    const fileInputPub = document.getElementById('file-input-pubkey');
+    let fileContents2 = '';
+
+    // Nút giải mã
+    verifyBtn.addEventListener('click', () => {
+        const fileIn2 = fileInput2.files[0]; // Get the selected file
+        const fileInPub = fileInputPub.files[0]; // Get the selected file
+        if (fileIn2 && fileInPub) {
+            const reader2 = new FileReader();
+            const readerPub = new FileReader();
+
+            reader2.onload = async (e) => {
+                fileContents2 = e.target.result;
+            };
+            readerPub.onload = async (e) => {
+                const fileContentsPub = e.target.result;
+
+                const keyData2 = fileContentsPub
+                    .replace(/-----BEGIN PUBLIC KEY-----/, '')
+                    .replace(/-----END PUBLIC KEY-----/, '')
+                    .replace(/\n/g, '');
+
+                const binaryDer2 = Uint8Array.from(atob(keyData2), c => c.charCodeAt(0));
+
+                const publicKeyObj = await crypto.subtle.importKey(
+                    'spki', // Xác định loại khóa công khai
+                    binaryDer2.buffer,
+                    {
+                        name: 'RSASSA-PKCS1-v1_5',
+                        hash: { name: 'SHA-256' }
+                    },
+                    true,
+                    ['verify'] // Chỉ định phép toán có thể thực hiện với khóa
+                );
+
+                // // Chuyển đổi chữ ký từ base64 (fileContents2) sang mảng byte
+                const binarySignature = new Uint8Array(atob(fileContents2).split('').map(c => c.charCodeAt(0)));
+
+                // const encodedMessage = new TextEncoder().encode(binarySignature);
+
+                const encodedMessage = new TextEncoder().encode(fileContents2);
+
+                // Xác minh chữ ký
+                const resultVerify = await crypto.subtle.verify(
+                    {
+                        name: 'RSASSA-PKCS1-v1_5'
+                    },
+                    publicKeyObj, // Public key để xác minh
+                    binarySignature,
+                    encodedMessage // Thông điệp gốc
+                );
+
+                // // Hiển thị kết quả xác minh
+                // if (isValid) {
+                //     document.getElementById('result-verify').value = 'Chữ ký hợp lệ!';
+                // } else {
+                //     document.getElementById('result-verify').value = 'Chữ ký không hợp lệ!';
+                // }
+
+                // Display kết quả sau khi giải mã
+                document.getElementById('result-verify').value = resultVerify;
+            };
+
+            reader2.readAsText(fileIn2); // Read the file as text (for this example)
+            readerPub.readAsText(fileInPub); // Read the file as text (for this example)
+        } else {
+            alert("Vui lòng chọn đầy đủ cả 2 file trước.");
+        }
+    });
+    
+}
+
 // Gắn sự kiện modal khi DOM đã sẵn sàng
 document.addEventListener('DOMContentLoaded', function() {
     attachModalEvents();
     attachModal2Events();
     attachdynamicModalEvents();
     attachdynamicModal2Events();
+    uploadHashSignEvents();
+    uploadVerifyEvents();
 });

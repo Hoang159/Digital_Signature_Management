@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="table-management">
-        <h3>Các chữ ký đã duyệt</h3>
+        <h3>Các tài khoản đã được cấp bộ khóa</h3>
         <table class="table">
             <thead>
                 <tr>
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <tbody>
                 <?php if (!empty($mana)): ?>
                     <?php foreach ($mana as $index => $manas): ?>
-                        <tr>
+                        <tr public-key-user="<?php echo htmlspecialchars($manas['public_key']); ?>">
                             <td><?= $index + 1 ?></td>
                             <td><?= htmlspecialchars($manas['username']) ?></td>
                             <td><?= htmlspecialchars($manas['full_name']) ?></td>

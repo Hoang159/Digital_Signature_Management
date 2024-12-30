@@ -413,9 +413,18 @@ body {
     border-radius: 5px;
     margin-right: 10px;
 }
+.sb3-xacminh .section-xacminh .form-group input[type="file"] {
+    width: calc(100% - 60px);
+    padding: 10px 10px 10px 0px;
+    font-size: 16px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    margin-right: 10px;
+}
 .sb3-xacminh .section-xacminh .form-group button {
     padding: 10px 20px;
     margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 16px;
     border: none;
     border-radius: 5px;

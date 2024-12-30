@@ -39,30 +39,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        $answerStmt->execute();
        $answer = $answerStmt->fetchColumn();
 
-       if ($answer == 1){
+      if ($answer == 1){
         $query1 = "UPDATE noti SET answer = 0 WHERE username = :username";
         $stmt1 = $pdo->prepare($query1);
         $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt1->execute();
         }
       
+        $userQuery = "SELECT is_registered FROM users WHERE username = :username";
+        $userStmt = $pdo->prepare($userQuery);
+        $userStmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $userStmt->execute();
+        $is_registered = $userStmt->fetchColumn();
 
-      if ($stmt->execute()) {
-          $_SESSION['full_name'] = $full_name;
-          $_SESSION['address'] = $address;
-          $_SESSION['email'] = $email;
-          $_SESSION['phonenumber'] = $phonenumber;
-          $success_message = "Đã cập nhật thông tin thành công!";
+      if ($is_registered == 2) {
+          $error_message = " Tài khoản đã được duyệt, vui lòng không thay đổi thông tin";
           header("Location: ../../src/components/home.html");
-          exit;
-      } else {
-          $error_message = "Cập nhật thông tin bị lỗi!";
-      }
-  } elseif ($action === 'update_password') {
-      // Xử lý thay đổi mật khẩu
-      $old_password = $_POST['old_password'];
-      $new_password = $_POST['new_password'];
-      $confirm_password = $_POST['confirm_password'];
+              exit;
+        }else {
+          if($stmt->execute()){
+            $_SESSION['full_name'] = $full_name;
+            $_SESSION['address'] = $address;
+            $_SESSION['email'] = $email;
+            $_SESSION['phonenumber'] = $phonenumber;
+            $success_message = "Đã cập nhật thông tin thành công!";
+            header("Location: ../../src/components/home.html");
+            exit;
+          }else {
+            $error_message = "Cập nhật thông tin bị lỗi!";
+          }
+        }
+      } else if ($action === 'update_password') {
+        // Xử lý thay đổi mật khẩu
+        $old_password = $_POST['old_password'];
+        $new_password = $_POST['new_password'];
+        $confirm_password = $_POST['confirm_password'];
 
       $username = $_SESSION['username'];
 
