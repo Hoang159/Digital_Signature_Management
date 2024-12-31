@@ -410,22 +410,23 @@ function uploadHashSignEvents() {
 // Hàm Upload và lấy nội dung văn bản + giải mã bằng publickey trong user_xacminh
 function uploadVerifyEvents() {
     // DOM elements
+    const fileInputOri = document.getElementById('file-input-original');
     const fileInput2 = document.getElementById('file-input2');
     const verifyBtn = document.getElementById('verify-btn');
     const fileInputPub = document.getElementById('file-input-pubkey');
-    const fileInputOri = document.getElementById('file-input-original');
-    let fileContents2 = '';
     let hashHex2 = '';
+    // let fileContents2 = '';
+    let binarySignature;
 
     // Nút giải mã
     verifyBtn.addEventListener('click', () => {
+        const fileInOri = fileInputOri.files[0]; // Get the selected file
         const fileIn2 = fileInput2.files[0]; // Get the selected file
         const fileInPub = fileInputPub.files[0]; // Get the selected file
-        const fileInOri = fileInputOri.files[0]; // Get the selected file
         if (fileIn2 && fileInPub && fileInOri) {
+            const readerOri = new FileReader();
             const reader2 = new FileReader();
             const readerPub = new FileReader();
-            const readerOri = new FileReader();
 
             readerOri.onload = async (e) => {
                 const fileContentsOri = e.target.result;
@@ -434,11 +435,14 @@ function uploadVerifyEvents() {
                 const hashBuffer2 = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(fileContentsOri));
                 const hashArray2 = Array.from(new Uint8Array(hashBuffer2)); // Convert buffer to byte array
                 hashHex2 = hashArray2.map(byte => byte.toString(16).padStart(2, '0')).join(''); // Convert bytes to hex string
-            };
+
 
             reader2.onload = async (e) => {
                 fileContents2 = e.target.result;
-            };
+                // Chuyển đổi chữ ký từ base64 (fileContents2) sang mảng byte
+                binarySignature = new Uint8Array(atob(fileContents2).split('').map(c => c.charCodeAt(0)));
+
+
             readerPub.onload = async (e) => {
                 const fileContentsPub = e.target.result;
 
@@ -459,9 +463,6 @@ function uploadVerifyEvents() {
                     true,
                     ['verify'] // Chỉ định phép toán có thể thực hiện với khóa
                 );
-
-                // // Chuyển đổi chữ ký từ base64 (fileContents2) sang mảng byte
-                const binarySignature = new Uint8Array(atob(fileContents2).split('').map(c => c.charCodeAt(0)));
 
                 // const encodedMessage2 = new TextEncoder().encode(binarySignature);
 
@@ -487,9 +488,14 @@ function uploadVerifyEvents() {
                 // // Display kết quả sau khi giải mã
                 // document.getElementById('result-verify').value = resultVerify;
             };
-            readerOri.readAsText(fileInOri); 
-            reader2.readAsText(fileIn2); 
             readerPub.readAsText(fileInPub); 
+
+            }; 
+            reader2.readAsText(fileIn2); 
+
+            };
+            readerOri.readAsText(fileInOri); 
+
         } else {
             alert("Vui lòng chọn đầy đủ cả 3 file trước.");
         }
