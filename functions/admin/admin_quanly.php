@@ -15,14 +15,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
 
-            if ($stmt->execute()) {
-                header("Location: ../../src/components/admin_home.html");
-                exit;
-            } else {
-                
-                echo "Lỗi: Không thể xóa";
-            }
-        }       
+        if ($stmt->execute()) {
+                // Cập nhật is_registered = 0 trong bảng 'users'
+            $updateUserQuery = "UPDATE users SET is_registered = 0 WHERE username = :username";
+            $updateUserStmt = $pdo->prepare($updateUserQuery);
+            $updateUserStmt->bindParam(':username', $username, PDO::PARAM_STR);
+            
+                if ($updateUserStmt->execute()) {
+                    // Xóa trong bảng noti
+                 $deletenoti = "DELETE FROM noti WHERE username = :username";
+                 $deletenotiStmt = $pdo->prepare($deletenoti);
+                 $deletenotiStmt->bindParam(':username', $username, PDO::PARAM_STR);
+        
+                     if ($deletenotiStmt->execute()) {
+                    //    $success_message = "Đánh giá của bạn đã được gửi thành công! ";
+                    //    $formSubmitted = true;
+                       header("Location: ../../src/components/home.html");
+                       exit;
+                     } else {
+                        $error_message = "Có lỗi xảy ra trong quá trình xử lý.";
+                     }
+                 }
+        }
+    }       
 }
 
 ?>
