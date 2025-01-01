@@ -51,7 +51,7 @@
             <input type="file" id="file-input-pubkey"> <br>
             <button id="verify-btn"><i class="fa-solid fa-unlock"></i> Verify</button> <br>
             <!-- <label for="result-verify">Kết quả xác thực</label> -->
-            <input type="text" id="result-verify" placeholder="Kết quả giải mã">
+            <input type="text" id="result-verify" placeholder="Kết quả xác thực">
         </div>
         <!-- <div class="form-group">
             <label for="publickey">Public Key</label>
